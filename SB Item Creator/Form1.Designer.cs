@@ -106,6 +106,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.invicotxt = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.typetxt = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.amourStatusAmount = new System.Windows.Forms.TextBox();
@@ -163,7 +164,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Bullets = new System.Windows.Forms.ImageList(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.typetxt = new System.Windows.Forms.TextBox();
             this.Recipetab.SuspendLayout();
             this.Maintab.SuspendLayout();
             this.groupBox21.SuspendLayout();
@@ -1175,6 +1175,13 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Armour Status Effects";
             // 
+            // typetxt
+            // 
+            this.typetxt.Location = new System.Drawing.Point(250, 181);
+            this.typetxt.Name = "typetxt";
+            this.typetxt.Size = new System.Drawing.Size(100, 20);
+            this.typetxt.TabIndex = 9;
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(457, 154);
@@ -1282,6 +1289,7 @@
             this.amourStatusAddBtn.TabIndex = 0;
             this.amourStatusAddBtn.Text = "Add";
             this.amourStatusAddBtn.UseVisualStyleBackColor = true;
+            this.amourStatusAddBtn.Click += new System.EventHandler(this.amourStatusAddBtn_Click);
             // 
             // Iconmodeltab
             // 
@@ -2007,13 +2015,6 @@
             this.Bullets.Images.SetKeyName(36, "ninjastar.png");
             this.Bullets.Images.SetKeyName(37, "pulse.png");
             this.Bullets.Images.SetKeyName(38, "purpleplasma.png");
-            // 
-            // typetxt
-            // 
-            this.typetxt.Location = new System.Drawing.Point(250, 181);
-            this.typetxt.Name = "typetxt";
-            this.typetxt.Size = new System.Drawing.Size(100, 20);
-            this.typetxt.TabIndex = 9;
             // 
             // Form1
             // 

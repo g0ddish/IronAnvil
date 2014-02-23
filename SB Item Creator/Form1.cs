@@ -229,18 +229,21 @@ namespace SB_Item_Creator
             }
             if (!Directory.Exists(folderBrowserDialog1.SelectedPath + "assets\\unpacked"))          //Looks for unpacked assets and unpack
             {
-                MessageBox.Show("This requires the Starbound data to run please select the Starbound folder");
+                MessageBox.Show("This requires the Starbound data to run asset_unpacket.bat and select the Starbound folder");
                 if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     Process proc = new Process();
                     proc.StartInfo.FileName = folderBrowserDialog1.SelectedPath + @"\win32\unpack_assets.bat";
                     File.Copy(folderBrowserDialog1.SelectedPath + "assets/unpacked", Environment.CurrentDirectory + "Data");
                 }
-               }
+            }
+            else
+            {
 
-            String[] allfiles = System.IO.Directory.GetFiles(folderBrowserDialog1.SelectedPath + "mods", "*.modinfo", System.IO.SearchOption.AllDirectories);
+                String[] allfiles = System.IO.Directory.GetFiles(folderBrowserDialog1.SelectedPath + "mods", "*.modinfo", System.IO.SearchOption.AllDirectories);
                 int i = 0;
-                foreach(string remove in allfiles){
+                foreach (string remove in allfiles)
+                {
                     allfiles[i] = remove.Replace(folderBrowserDialog1.SelectedPath + "mods\\", string.Empty);
                     i++;
                 }
@@ -259,7 +262,8 @@ namespace SB_Item_Creator
                 }
 
                 StarboundPath = folderBrowserDialog1.SelectedPath;
-            listBox2.DataSource = allfiles;
+                listBox2.DataSource = allfiles;
+            }
             Main = tabControl1.TabPages["Maintab"];
             Armour = tabControl1.TabPages["ArmourTab"];
             Melee = tabControl1.TabPages["Meleetab"];
@@ -578,6 +582,12 @@ namespace SB_Item_Creator
         private void Form1_Shown(object sender, EventArgs e)
         {
             Form.ActiveForm.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.CurrentDirectory + "\\icon.ico");
+        }
+
+        private void amourStatusAddBtn_Click(object sender, EventArgs e)
+        {
+           
+            this.armourStatusEffects.Rows.Add(amourStatusKind.Text, Convert.ToInt32(amourStatusAmount.Text));
         }
 
     }
