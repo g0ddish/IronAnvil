@@ -1,4 +1,5 @@
-﻿namespace SB_Item_Creator
+﻿using System;
+namespace SB_Item_Creator
 {
     partial class Form1
     {
@@ -106,14 +107,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.invicotxt = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.typetxt = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.amourStatusAmount = new System.Windows.Forms.TextBox();
-            this.armourStatusEffects = new System.Windows.Forms.DataGridView();
-            this.Kind = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -164,6 +160,30 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Bullets = new System.Windows.Forms.ImageList(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.armourStatusEffects = new System.Windows.Forms.DataGridView();
+            this.test = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.facemaskpic = new System.Windows.Forms.PictureBox();
+            this.masktxtbox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.modselectlbl = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.backmpic = new System.Windows.Forms.PictureBox();
+            this.frontmpic = new System.Windows.Forms.PictureBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.frontmtxt = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.backmtxt = new System.Windows.Forms.TextBox();
+            this.backfpic = new System.Windows.Forms.PictureBox();
+            this.frontfpic = new System.Windows.Forms.PictureBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.backftxt = new System.Windows.Forms.TextBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.frontftxt = new System.Windows.Forms.TextBox();
+            this.typetxt = new System.Windows.Forms.ComboBox();
             this.Recipetab.SuspendLayout();
             this.Maintab.SuspendLayout();
             this.groupBox21.SuspendLayout();
@@ -186,7 +206,6 @@
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invicopicbox)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.armourStatusEffects)).BeginInit();
             this.Iconmodeltab.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -197,6 +216,12 @@
             this.Meleetab.SuspendLayout();
             this.groupBox19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meleeinvicon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.armourStatusEffects)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facemaskpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backmpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frontmpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backfpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frontfpic)).BeginInit();
             this.SuspendLayout();
             // 
             // Butt
@@ -488,6 +513,7 @@
             // 
             // groupBox18
             // 
+            this.groupBox18.Controls.Add(this.button4);
             this.groupBox18.Controls.Add(this.saveBtn);
             this.groupBox18.Controls.Add(this.moddependlist);
             this.groupBox18.Controls.Add(this.moddesctxtbox);
@@ -511,11 +537,11 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(505, 70);
+            this.saveBtn.Location = new System.Drawing.Point(271, 41);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.Size = new System.Drawing.Size(95, 23);
             this.saveBtn.TabIndex = 18;
-            this.saveBtn.Text = "Save";
+            this.saveBtn.Text = "Save Modinfo";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
@@ -630,10 +656,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.modselectlbl);
+            this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.listBox2);
             this.groupBox2.Location = new System.Drawing.Point(740, 247);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(208, 265);
+            this.groupBox2.Size = new System.Drawing.Size(208, 396);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "I/O";
@@ -976,6 +1006,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(984, 717);
             this.tabControl1.TabIndex = 19;
+            this.tabControl1.VisibleChanged += new System.EventHandler(this.tabControl1_VisibleChanged);
             // 
             // ArmourTab
             // 
@@ -1033,6 +1064,12 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.button13);
+            this.groupBox16.Controls.Add(this.frontftxt);
+            this.groupBox16.Controls.Add(this.button12);
+            this.groupBox16.Controls.Add(this.backftxt);
+            this.groupBox16.Controls.Add(this.frontfpic);
+            this.groupBox16.Controls.Add(this.backfpic);
             this.groupBox16.Controls.Add(this.button8);
             this.groupBox16.Controls.Add(this.femaleframetxt);
             this.groupBox16.Controls.Add(this.femaleframebox);
@@ -1045,7 +1082,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(6, 367);
+            this.button8.Location = new System.Drawing.Point(11, 183);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 6;
@@ -1054,7 +1091,7 @@
             // 
             // femaleframetxt
             // 
-            this.femaleframetxt.Location = new System.Drawing.Point(6, 341);
+            this.femaleframetxt.Location = new System.Drawing.Point(11, 157);
             this.femaleframetxt.Name = "femaleframetxt";
             this.femaleframetxt.Size = new System.Drawing.Size(154, 20);
             this.femaleframetxt.TabIndex = 5;
@@ -1064,12 +1101,18 @@
             this.femaleframebox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.femaleframebox.Location = new System.Drawing.Point(6, 19);
             this.femaleframebox.Name = "femaleframebox";
-            this.femaleframebox.Size = new System.Drawing.Size(434, 316);
+            this.femaleframebox.Size = new System.Drawing.Size(171, 132);
             this.femaleframebox.TabIndex = 5;
             this.femaleframebox.TabStop = false;
             // 
             // groupBox15
             // 
+            this.groupBox15.Controls.Add(this.button11);
+            this.groupBox15.Controls.Add(this.backmtxt);
+            this.groupBox15.Controls.Add(this.button9);
+            this.groupBox15.Controls.Add(this.frontmtxt);
+            this.groupBox15.Controls.Add(this.frontmpic);
+            this.groupBox15.Controls.Add(this.backmpic);
             this.groupBox15.Controls.Add(this.button7);
             this.groupBox15.Controls.Add(this.maleframetxt);
             this.groupBox15.Controls.Add(this.maleframebox);
@@ -1082,7 +1125,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(6, 367);
+            this.button7.Location = new System.Drawing.Point(6, 169);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 5;
@@ -1091,7 +1134,7 @@
             // 
             // maleframetxt
             // 
-            this.maleframetxt.Location = new System.Drawing.Point(5, 341);
+            this.maleframetxt.Location = new System.Drawing.Point(5, 143);
             this.maleframetxt.Name = "maleframetxt";
             this.maleframetxt.Size = new System.Drawing.Size(154, 20);
             this.maleframetxt.TabIndex = 4;
@@ -1101,7 +1144,7 @@
             this.maleframebox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.maleframebox.Location = new System.Drawing.Point(5, 19);
             this.maleframebox.Name = "maleframebox";
-            this.maleframebox.Size = new System.Drawing.Size(434, 316);
+            this.maleframebox.Size = new System.Drawing.Size(156, 118);
             this.maleframebox.TabIndex = 4;
             this.maleframebox.TabStop = false;
             // 
@@ -1158,10 +1201,12 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.typetxt);
+            this.groupBox4.Controls.Add(this.masktxtbox);
+            this.groupBox4.Controls.Add(this.facemaskpic);
+            this.groupBox4.Controls.Add(this.armourStatusEffects);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.amourStatusAmount);
-            this.groupBox4.Controls.Add(this.armourStatusEffects);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.textBox5);
             this.groupBox4.Controls.Add(this.label15);
@@ -1174,13 +1219,6 @@
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Armour Status Effects";
-            // 
-            // typetxt
-            // 
-            this.typetxt.Location = new System.Drawing.Point(250, 181);
-            this.typetxt.Name = "typetxt";
-            this.typetxt.Size = new System.Drawing.Size(100, 20);
-            this.typetxt.TabIndex = 9;
             // 
             // button3
             // 
@@ -1206,37 +1244,6 @@
             this.amourStatusAmount.Name = "amourStatusAmount";
             this.amourStatusAmount.Size = new System.Drawing.Size(100, 20);
             this.amourStatusAmount.TabIndex = 6;
-            // 
-            // armourStatusEffects
-            // 
-            this.armourStatusEffects.AllowUserToAddRows = false;
-            this.armourStatusEffects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.armourStatusEffects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Kind,
-            this.Amount,
-            this.Level});
-            this.armourStatusEffects.Location = new System.Drawing.Point(234, 19);
-            this.armourStatusEffects.Name = "armourStatusEffects";
-            this.armourStatusEffects.Size = new System.Drawing.Size(345, 129);
-            this.armourStatusEffects.TabIndex = 1;
-            // 
-            // Kind
-            // 
-            this.Kind.HeaderText = "Kind";
-            this.Kind.Name = "Kind";
-            this.Kind.ReadOnly = true;
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            // 
-            // Level
-            // 
-            this.Level.HeaderText = "Level";
-            this.Level.Name = "Level";
-            this.Level.ReadOnly = true;
             // 
             // label16
             // 
@@ -2016,6 +2023,201 @@
             this.Bullets.Images.SetKeyName(37, "pulse.png");
             this.Bullets.Images.SetKeyName(38, "purpleplasma.png");
             // 
+            // armourStatusEffects
+            // 
+            this.armourStatusEffects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.armourStatusEffects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.test,
+            this.Column1,
+            this.Column2});
+            this.armourStatusEffects.Location = new System.Drawing.Point(234, 15);
+            this.armourStatusEffects.Name = "armourStatusEffects";
+            this.armourStatusEffects.Size = new System.Drawing.Size(351, 121);
+            this.armourStatusEffects.TabIndex = 10;
+            // 
+            // test
+            // 
+            this.test.HeaderText = "Kind";
+            this.test.Name = "test";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Amount";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Level";
+            this.Column2.Name = "Column2";
+            // 
+            // facemaskpic
+            // 
+            this.facemaskpic.Location = new System.Drawing.Point(24, 130);
+            this.facemaskpic.Name = "facemaskpic";
+            this.facemaskpic.Size = new System.Drawing.Size(60, 51);
+            this.facemaskpic.TabIndex = 11;
+            this.facemaskpic.TabStop = false;
+            // 
+            // masktxtbox
+            // 
+            this.masktxtbox.Location = new System.Drawing.Point(28, 197);
+            this.masktxtbox.Name = "masktxtbox";
+            this.masktxtbox.Size = new System.Drawing.Size(83, 20);
+            this.masktxtbox.TabIndex = 12;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(17, 270);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(159, 26);
+            this.label24.TabIndex = 27;
+            this.label24.Text = "Files will be saved in this mod dir\r\nMod selected:";
+            // 
+            // modselectlbl
+            // 
+            this.modselectlbl.AutoSize = true;
+            this.modselectlbl.Location = new System.Drawing.Point(17, 307);
+            this.modselectlbl.Name = "modselectlbl";
+            this.modselectlbl.Size = new System.Drawing.Size(7, 13);
+            this.modselectlbl.TabIndex = 28;
+            this.modselectlbl.Text = "\r\n";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 367);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Save Item";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(127, 367);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "Clear";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(372, 41);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 19;
+            this.button4.Text = "Build Pak";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // backmpic
+            // 
+            this.backmpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backmpic.Location = new System.Drawing.Point(186, 19);
+            this.backmpic.Name = "backmpic";
+            this.backmpic.Size = new System.Drawing.Size(156, 118);
+            this.backmpic.TabIndex = 6;
+            this.backmpic.TabStop = false;
+            // 
+            // frontmpic
+            // 
+            this.frontmpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frontmpic.Location = new System.Drawing.Point(3, 198);
+            this.frontmpic.Name = "frontmpic";
+            this.frontmpic.Size = new System.Drawing.Size(156, 118);
+            this.frontmpic.TabIndex = 7;
+            this.frontmpic.TabStop = false;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(6, 347);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "Browse";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // frontmtxt
+            // 
+            this.frontmtxt.Location = new System.Drawing.Point(5, 322);
+            this.frontmtxt.Name = "frontmtxt";
+            this.frontmtxt.Size = new System.Drawing.Size(154, 20);
+            this.frontmtxt.TabIndex = 8;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(187, 169);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 11;
+            this.button11.Text = "Browse";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // backmtxt
+            // 
+            this.backmtxt.Location = new System.Drawing.Point(186, 143);
+            this.backmtxt.Name = "backmtxt";
+            this.backmtxt.Size = new System.Drawing.Size(154, 20);
+            this.backmtxt.TabIndex = 10;
+            // 
+            // backfpic
+            // 
+            this.backfpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backfpic.Location = new System.Drawing.Point(202, 19);
+            this.backfpic.Name = "backfpic";
+            this.backfpic.Size = new System.Drawing.Size(171, 132);
+            this.backfpic.TabIndex = 7;
+            this.backfpic.TabStop = false;
+            // 
+            // frontfpic
+            // 
+            this.frontfpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frontfpic.Location = new System.Drawing.Point(6, 212);
+            this.frontfpic.Name = "frontfpic";
+            this.frontfpic.Size = new System.Drawing.Size(171, 132);
+            this.frontfpic.TabIndex = 8;
+            this.frontfpic.TabStop = false;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(202, 183);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 10;
+            this.button12.Text = "Browse";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // backftxt
+            // 
+            this.backftxt.Location = new System.Drawing.Point(202, 157);
+            this.backftxt.Name = "backftxt";
+            this.backftxt.Size = new System.Drawing.Size(154, 20);
+            this.backftxt.TabIndex = 9;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(6, 367);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 12;
+            this.button13.Text = "Browse";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // frontftxt
+            // 
+            this.frontftxt.Location = new System.Drawing.Point(6, 350);
+            this.frontftxt.Name = "frontftxt";
+            this.frontftxt.Size = new System.Drawing.Size(154, 20);
+            this.frontftxt.TabIndex = 11;
+            // 
+            // typetxt
+            // 
+            this.typetxt.FormattingEnabled = true;
+            this.typetxt.Location = new System.Drawing.Point(218, 153);
+            this.typetxt.Name = "typetxt";
+            this.typetxt.Size = new System.Drawing.Size(121, 21);
+            this.typetxt.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2029,6 +2231,7 @@
             this.Text = "Iron Anvil";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.VisibleChanged += new System.EventHandler(this.Form1_VisibleChanged);
             this.Recipetab.ResumeLayout(false);
             this.Maintab.ResumeLayout(false);
             this.Maintab.PerformLayout();
@@ -2037,6 +2240,7 @@
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -2060,7 +2264,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.invicopicbox)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.armourStatusEffects)).EndInit();
             this.Iconmodeltab.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
@@ -2077,6 +2280,12 @@
             this.groupBox19.ResumeLayout(false);
             this.groupBox19.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meleeinvicon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.armourStatusEffects)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facemaskpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backmpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frontmpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backfpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frontfpic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2145,10 +2354,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridView armourStatusEffects;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kind;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Level;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label15;
@@ -2216,7 +2421,30 @@
         private System.Windows.Forms.ListBox moddependlist;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TextBox typetxt;
+        private System.Windows.Forms.DataGridView armourStatusEffects;
+        private System.Windows.Forms.DataGridViewTextBoxColumn test;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.PictureBox facemaskpic;
+        private System.Windows.Forms.TextBox masktxtbox;
+        private System.Windows.Forms.Label modselectlbl;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.TextBox frontftxt;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.TextBox backftxt;
+        private System.Windows.Forms.PictureBox frontfpic;
+        private System.Windows.Forms.PictureBox backfpic;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox backmtxt;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox frontmtxt;
+        private System.Windows.Forms.PictureBox frontmpic;
+        private System.Windows.Forms.PictureBox backmpic;
+        private System.Windows.Forms.ComboBox typetxt;
     }
 }
 

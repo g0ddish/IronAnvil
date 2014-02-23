@@ -57,6 +57,7 @@
     <Compile Include="Armour.cs" />
     <Compile Include="ArmourLegs.cs" />
     <Compile Include="ArmourHead.cs" />
+    <Compile Include="ArmourChest.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +76,7 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frames.cs" />
     <Compile Include="gun.cs" />
     <Compile Include="MetaData.cs" />
     <Compile Include="ModInfo.cs" />

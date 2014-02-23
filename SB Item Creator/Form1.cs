@@ -104,14 +104,127 @@ namespace SB_Item_Creator
         private void updatecode_Click(object sender, EventArgs e)
         {
             //  ItemBuilder item = new ItemBuilder();
+            float[] coll = new float[4];
+            int i = 1;
+            ArrayList sees = new ArrayList();
             switch (itemTypebox.Text)
             {
+
                 case ("Armour"):
                     switch (typetxt.Text)
                     {
                         case "chest":
+                            ArmourChest chest = new ArmourChest();
+                            chest.RefrenceName = itemNametxtbox.Text.Replace(" ", string.Empty).ToLower().Replace("'", string.Empty);
+                            chest.Name = itemNametxtbox.Text;
+                            chest.IconPath = invicotxt.Text;
+                            
+                            
+                            coll[0] = float.Parse(dropCol1.Text);
+                            coll[1] = float.Parse(dropCol2.Text);
+                            coll[2] = float.Parse(dropCol3.Text);
+                            coll[3] = float.Parse(dropCol4.Text);
+                            chest.Collisions = coll;
+                            chest.MaxStack = Convert.ToInt32(maxstack.Value);
+                            chest.Rarity = raritybox.Text;
+                            chest.Description = Description.Text;
+                            chest.InspectionKind = "armor";
+                            Frames male = new Frames();
+                            male.Body = maleframetxt.Text;
+                            male.BackS = backmtxt.Text;
+                            male.FrontS = frontmtxt.Text;
+                            Frames female = new Frames();
+                            female.Body = femaleframetxt.Text;
+                            female.BackS = backftxt.Text;
+                            female.FrontS = frontftxt.Text;
+                            chest.MFrames = male;
+                            chest.FFrames = female;
+                  
+                            //ah.StatusEffectsString
+                           
+                     
+                            foreach (DataGridViewRow se in armourStatusEffects.Rows)
+                            {
+                                if (se.Cells[0].Value != null && se.Cells[1].Value != null)
+                                {
+                                    se.Cells[0].FormattedValue.ToString();
+                                    StatusEffect see = new StatusEffect();
+                                    see.Kind = se.Cells[0].Value.ToString();
+                                    string str = se.Cells[i].Value.ToString();
+                                    see.Amount = Convert.ToInt32(str);
+                                    System.Console.Write(str);
+                                    // see.Amount = a;
+                                    //  i++;
+                                    try
+                                    {
+                                        //  see.Level = se.Cells[2].Value.ToString();
+                                        sees.Add(see);
+                                    }
+                                    catch (Exception l)
+                                    {
+                                        sees.Add(see);
+                                    }
+
+
+                                }
+                                chest.StatusEffectsString = sees;
+
+                                var json = JsonConvert.SerializeObject(chest, Formatting.Indented);
+                                Console.Write(json);
+                                rawcode.Text = json;
+                            }
                             break;
                         case "head":
+                            ArmourHead ahead = new ArmourHead();
+                            ahead.RefrenceName = itemNametxtbox.Text.Replace(" ", string.Empty).ToLower().Replace("'", string.Empty);
+                            ahead.Name = itemNametxtbox.Text;
+                            ahead.IconPath = invicotxt.Text;
+                            ahead.Mask = masktxtbox.Text;
+                            
+                            coll[0] = float.Parse(dropCol1.Text);
+                            coll[1] = float.Parse(dropCol2.Text);
+                            coll[2] = float.Parse(dropCol3.Text);
+                            coll[3] = float.Parse(dropCol4.Text);
+                            ahead.Collisions = coll;
+                            ahead.MaxStack = Convert.ToInt32(maxstack.Value);
+                            ahead.Rarity = raritybox.Text;
+                            ahead.Description = Description.Text;
+                            ahead.InspectionKind = "armor";
+                            ahead.MaleFrames = maleframetxt.Text;
+                            ahead.FemaleFrames = femaleframetxt.Text;
+                            //ah.StatusEffectsString
+                           
+                     
+                            foreach (DataGridViewRow se in armourStatusEffects.Rows)
+                            {
+                                if (se.Cells[0].Value != null && se.Cells[1].Value != null)
+                                {
+                                    se.Cells[0].FormattedValue.ToString();
+                                    StatusEffect see = new StatusEffect();
+                                    see.Kind = se.Cells[0].Value.ToString();
+                                    string str = se.Cells[i].Value.ToString();
+                                    see.Amount = Convert.ToInt32(str);
+                                    System.Console.Write(str);
+                                    // see.Amount = a;
+                                    //  i++;
+                                    try
+                                    {
+                                        //  see.Level = se.Cells[2].Value.ToString();
+                                        sees.Add(see);
+                                    }
+                                    catch (Exception l)
+                                    {
+                                        sees.Add(see);
+                                    }
+
+
+                                }
+                                ahead.StatusEffectsString = sees;
+
+                                var json = JsonConvert.SerializeObject(ahead, Formatting.Indented);
+                                Console.Write(json);
+                                rawcode.Text = json;
+                            }
                             break;
                         case "pants":
                             ArmourLegs ah = new ArmourLegs();
@@ -119,7 +232,7 @@ namespace SB_Item_Creator
                             ah.Name = itemNametxtbox.Text;
                             ah.IconPath = invicotxt.Text;
 
-                            float[] coll = new float[4];
+                            
                             coll[0] = float.Parse(dropCol1.Text);
                             coll[1] = float.Parse(dropCol2.Text);
                             coll[2] = float.Parse(dropCol3.Text);
@@ -132,29 +245,38 @@ namespace SB_Item_Creator
                             ah.MaleFrames = maleframetxt.Text;
                             ah.FemaleFrames = femaleframetxt.Text;
                             //ah.StatusEffectsString
-                            ArrayList sees = new ArrayList();
+                            
+                           
                             foreach (DataGridViewRow se in armourStatusEffects.Rows)
                             {
-                                se.Cells[0].FormattedValue.ToString();
-                                StatusEffect see = new StatusEffect();
-                                see.Kind = se.Cells[0].FormattedValue.ToString();
-                                see.Amount = Convert.ToInt32(se.Cells[1].Value.ToString());
-                                try {
-                               //  see.Level = se.Cells[2].Value.ToString();
-                                     sees.Add(see);
+                                if (se.Cells[0].Value != null && se.Cells[1].Value != null)
+                                {
+                                    se.Cells[0].FormattedValue.ToString();
+                                    StatusEffect see = new StatusEffect();
+                                    see.Kind = se.Cells[0].Value.ToString();
+                                    string str = se.Cells[i].Value.ToString();
+                                    see.Amount = Convert.ToInt32(str);
+                                    System.Console.Write(str);
+                                    // see.Amount = a;
+                                    //  i++;
+                                    try
+                                    {
+                                        //  see.Level = se.Cells[2].Value.ToString();
+                                        sees.Add(see);
+                                    }
+                                    catch (Exception l)
+                                    {
+                                        sees.Add(see);
+                                    }
+
+
                                 }
-                                catch(Exception l){
-                                  sees.Add(see);
-                                }
-                              
-                           
+                                ah.StatusEffectsString = sees;
+
+                                var json = JsonConvert.SerializeObject(ah, Formatting.Indented);
+                                Console.Write(json);
+                                rawcode.Text = json;
                             }
-                            ah.StatusEffectsString = sees;
-
-                            var json = JsonConvert.SerializeObject(ah, Formatting.Indented);
-                            Console.Write(json);
-                            rawcode.Text = json;
-
 
                             break;
                         case ("Coin"):
@@ -213,41 +335,89 @@ namespace SB_Item_Creator
        private TabPage Code = new TabPage();
 
         private string StarboundPath;
-
+        private string AssetFolder;
         private void Form1_Load(object sender, EventArgs e)
         {
           
+
             this.listBox1.MouseDoubleClick += new MouseEventHandler(listBox1_MouseDoubleClick);
             this.listBox2.MouseDoubleClick += new MouseEventHandler(listBox2_MouseDoubleClick);
-            if (File.Exists("C:\\Program Files (x86)\\Steam\\Steam.exe"))  //Checks for steam installion and bit
-            {
-                folderBrowserDialog1.SelectedPath = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Starbound\\";
-            }
-            else if (File.Exists("C:\\Program Files\\Steam\\Steam.exe"))
-            {
-                folderBrowserDialog1.SelectedPath = "C:\\Program Files\\Steam\\SteamApps\\common\\Starbound\\";
-            }
-            if (!Directory.Exists(folderBrowserDialog1.SelectedPath + "assets\\unpacked"))          //Looks for unpacked assets and unpack
-            {
-                MessageBox.Show("This requires the Starbound data to run asset_unpacket.bat and select the Starbound folder");
-                if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    Process proc = new Process();
-                    proc.StartInfo.FileName = folderBrowserDialog1.SelectedPath + @"\win32\unpack_assets.bat";
-                   // File.Copy(folderBrowserDialog1.SelectedPath + "assets/unpacked", Environment.CurrentDirectory + "Data");
-                }
-            }
-            else
-            {
 
-                String[] allfiles = System.IO.Directory.GetFiles(folderBrowserDialog1.SelectedPath + "mods", "*.modinfo", System.IO.SearchOption.AllDirectories);
+            if (File.Exists(Environment.CurrentDirectory + "\\config.cfg"))
+            {
+                string[] lines = System.IO.File.ReadAllLines(Environment.CurrentDirectory + "\\config.cfg");
+                AssetFolder = lines[0];
+                StarboundPath = lines[1];
+            }
+            else      //FIRST RUN BELOW IN THIS ELSE
+            {
+                if (File.Exists("C:\\Program Files (x86)\\Steam\\Steam.exe"))  //Checks for steam installion and bit
+                {
+                    folderBrowserDialog1.SelectedPath = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Starbound\\";
+                    StarboundPath = folderBrowserDialog1.SelectedPath;
+                }
+                else if (File.Exists("C:\\Program Files\\Steam\\Steam.exe"))
+                {
+                    folderBrowserDialog1.SelectedPath = "C:\\Program Files\\Steam\\SteamApps\\common\\Starbound\\";
+                    StarboundPath = folderBrowserDialog1.SelectedPath;
+                }
+                else
+                {
+                    MessageBox.Show("Starbound not found on C Drive");
+                    Application.Exit();
+                }
+                if (!Directory.Exists(folderBrowserDialog1.SelectedPath + "assets\\unpacked"))          //Looks for unpacked assets and unpack
+                {
+                    MessageBox.Show(
+                      @"
+                    This program requires the Starbound data. 
+                    Run asset_unpacket.bat in SteamApps\common\Starbound\win32 
+                    or if you've already extracted it select select the Starbound folder");
+                    if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        AssetFolder = folderBrowserDialog1.SelectedPath;
+                        Console.Write(AssetFolder);
+                        if (Directory.Exists(AssetFolder + "\\items") || Directory.Exists(AssetFolder + "\\animations"))
+                        {
+                            AssetFolder = folderBrowserDialog1.SelectedPath;
+                            string[] data = { AssetFolder, StarboundPath };
+                            string path2 = Environment.CurrentDirectory + "\\config.cfg";
+                            System.IO.File.WriteAllLines(path2, data);
+                            System.Console.Write(AssetFolder);
+                        }
+                        else {
+                            MessageBox.Show("This is not an asset folder");
+                            Application.Exit();
+                        }
+                    }
+                }
+                else
+                {
+                    AssetFolder = folderBrowserDialog1.SelectedPath + "assets\\unpacked";
+                    if (Directory.Exists(AssetFolder + "\\items") || Directory.Exists(AssetFolder + "\\animations"))
+                    {
+                        AssetFolder = folderBrowserDialog1.SelectedPath;
+                        string[] data = { AssetFolder, StarboundPath };
+                        string path2 = Environment.CurrentDirectory + "\\config.cfg";
+                        System.IO.File.WriteAllLines(path2, data);
+                        System.Console.Write(AssetFolder);
+                    }
+                    else
+                    {
+                        MessageBox.Show("This is not an asset folder");
+                        Application.Exit();
+                    }
+                }
+               
+            }
+                String[] allfiles = System.IO.Directory.GetFiles(StarboundPath + "mods", "*.modinfo", System.IO.SearchOption.AllDirectories);
                 int i = 0;
                 foreach (string remove in allfiles)
                 {
-                    allfiles[i] = remove.Replace(folderBrowserDialog1.SelectedPath + "mods\\", string.Empty);
+                    allfiles[i] = remove.Replace(StarboundPath + "mods\\", string.Empty);
                     i++;
                 }
-                string path = folderBrowserDialog1.SelectedPath + "\\assets\\unpacked";
+                string path = AssetFolder;
                 String[] allfile = System.IO.Directory.GetFiles(path, "*.*", System.IO.SearchOption.AllDirectories);
                 String[] items2 = allfile.Select(x => x.Replace(path, string.Empty)).ToArray();
                 listBox1.DataSource = items2;
@@ -261,9 +431,9 @@ namespace SB_Item_Creator
                     allfs.Add(str.ToString());
                 }
 
-                StarboundPath = folderBrowserDialog1.SelectedPath;
+                
                 listBox2.DataSource = allfiles;
-            }
+            
             Main = tabControl1.TabPages["Maintab"];
             Armour = tabControl1.TabPages["ArmourTab"];
             Melee = tabControl1.TabPages["Meleetab"];
@@ -280,6 +450,9 @@ namespace SB_Item_Creator
             tabControl1.TabPages.Add(Main);
             tabControl1.TabPages.Add(Code);
             tabControl1.TabPages.Add(Recipe);
+
+
+          
         }
 
         private void AddDefaultTabs() {
@@ -480,11 +653,68 @@ namespace SB_Item_Creator
        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
               
-                string moditemdata = File.ReadAllText(StarboundPath + "assets\\unpacked\\" + listBox1.SelectedItem.ToString());
-                string itemextention = Path.GetExtension(StarboundPath + "assets\\unpacked\\" + listBox1.SelectedItem.ToString());
+                string moditemdata = File.ReadAllText(AssetFolder + listBox1.SelectedItem.ToString());
+                string itemextention = Path.GetExtension(AssetFolder + listBox1.SelectedItem.ToString());
+           string path =Path.GetDirectoryName(AssetFolder + listBox1.SelectedItem.ToString());
            switch(itemextention){
                case(".chest"):
                    itemTypebox.Text = "Armour";
+                    AddDefaultTabs();
+                   tabControl1.TabPages.Add(Armour);
+                   ArmourChest chest = JsonConvert.DeserializeObject<ArmourChest>(moditemdata);
+                   itemNametxtbox.Text = chest.Name;
+                   maxstack.Value = chest.MaxStack;
+                   raritybox.Text = chest.Rarity;
+                   dropCol1.Text = chest.Collisions[0].ToString();
+                   dropCol2.Text = chest.Collisions[1].ToString();
+                   dropCol3.Text = chest.Collisions[2].ToString();
+                   dropCol4.Text = chest.Collisions[3].ToString();
+                   itemTypebox.Text = "Armour";
+
+                   string[] file = chest.IconPath.Split(':');
+                   invicopicbox.Image = Image.FromFile(path + "\\" + file[0]);
+
+                   invicotxt.Text = file[0];
+                   typetxt.Text = file[1];
+                   maleframetxt.Text = chest.MFrames.Body;
+                   
+                  // d.Text = chest.MFrames.Body;
+                   maleframetxt.Text = chest.MFrames.Body;
+                   backmtxt.Text = chest.MFrames.BackS;
+                   frontmtxt.Text = chest.MFrames.FrontS;
+
+
+                   femaleframetxt.Text = chest.FFrames.Body;
+                   frontftxt.Text = chest.FFrames.FrontS;
+                   backftxt.Text = chest.FFrames.BackS;
+
+                   maleframebox.Image = Image.FromFile(path + "\\" + chest.MFrames.Body);
+                   backmpic.Image = Image.FromFile(path + "\\" + chest.MFrames.BackS);
+                   frontmpic.Image = Image.FromFile(path + "\\" + chest.MFrames.FrontS);
+
+                   femaleframebox.Image = Image.FromFile(path + "\\" + chest.FFrames.Body);
+                   this.armourStatusEffects.Rows.Clear();
+                   foreach (JObject se in chest.StatusEffectsString)
+                   {
+                       JToken token = (JToken)se;
+                       string kind = (string)token.SelectToken("kind");
+                       int amount = (int)token.SelectToken("amount");
+                       if (token.SelectToken("level") != null)
+                       {
+
+                           int level = (int)token.SelectToken("level");
+                           this.armourStatusEffects.Rows.Add(kind, amount, level);
+                          
+                       }
+                       else { 
+                          this.armourStatusEffects.Rows.Add(kind, amount);
+                       }
+                       
+                    
+                     
+                       System.Console.WriteLine(kind);
+                   }
+                   
                    break;
                case(".legs"):
                    AddDefaultTabs();
@@ -498,12 +728,12 @@ namespace SB_Item_Creator
                    dropCol3.Text = legs.Collisions[2].ToString();
                    dropCol4.Text = legs.Collisions[3].ToString();
                    itemTypebox.Text = "Armour";
-                   string path =Path.GetDirectoryName(StarboundPath + "assets\\unpacked\\" + listBox1.SelectedItem.ToString());
-                    string[] file =  legs.IconPath.Split(':');
-                   invicopicbox.Image = Image.FromFile(path + "\\" + file[0]);
+                   
+                    string[] filez =  legs.IconPath.Split(':');
+                   invicopicbox.Image = Image.FromFile(path + "\\" + filez[0]);
 
-                   invicotxt.Text = file[0];
-                   typetxt.Text = file[1];
+                   invicotxt.Text = filez[0];
+                   typetxt.Text = filez[1];
                    maleframetxt.Text = legs.MaleFrames;
                    femaleframetxt.Text = legs.FemaleFrames;
                    maleframebox.Image = Image.FromFile(path + "\\" + legs.MaleFrames);
@@ -515,11 +745,12 @@ namespace SB_Item_Creator
                        int amount = (int)token.SelectToken("amount");
                        if (token.SelectToken("level") != null)
                        {
+
                            int level = (int)token.SelectToken("level");
                            this.armourStatusEffects.Rows.Add(kind, amount, level);
-
+                          
                        }
-                       else {
+                       else { 
                           this.armourStatusEffects.Rows.Add(kind, amount);
                        }
                        
@@ -531,7 +762,51 @@ namespace SB_Item_Creator
                    
                    break;
                case(".head"):
+                     AddDefaultTabs();
+                   tabControl1.TabPages.Add(Armour);
+                   ArmourHead head = JsonConvert.DeserializeObject<ArmourHead>(moditemdata);
                    itemTypebox.Text = "Armour";
+                   facemaskpic.Image = Image.FromFile(path + "\\" + head.Mask);
+                   masktxtbox.Text = head.Mask;
+                   itemNametxtbox.Text = head.Name;
+                   maxstack.Value = head.MaxStack;
+                   raritybox.Text = head.Rarity;
+                   dropCol1.Text = head.Collisions[0].ToString();
+                   dropCol2.Text = head.Collisions[1].ToString();
+                   dropCol3.Text = head.Collisions[2].ToString();
+                   dropCol4.Text = head.Collisions[3].ToString();
+                   itemTypebox.Text = "Armour";
+
+                   string[] files = head.IconPath.Split(':');
+                   invicopicbox.Image = Image.FromFile(path + "\\" + files[0]);
+
+                   invicotxt.Text = files[0];
+                   typetxt.Text = files[1];
+                   maleframetxt.Text = head.MaleFrames;
+                   femaleframetxt.Text = head.FemaleFrames;
+                   maleframebox.Image = Image.FromFile(path + "\\" + head.MaleFrames);
+                   femaleframebox.Image = Image.FromFile(path + "\\" + head.FemaleFrames);
+                   this.armourStatusEffects.Rows.Clear();
+                   foreach (JObject se in head.StatusEffectsString)
+                   {
+                       JToken token = (JToken)se;
+                       string kind = (string)token.SelectToken("kind");
+                       int amount = (int)token.SelectToken("amount");
+                       if (token.SelectToken("level") != null)
+                       {
+
+                           int level = (int)token.SelectToken("level");
+                           this.armourStatusEffects.Rows.Add(kind, amount, level);
+                          
+                       }
+                       else { 
+                          this.armourStatusEffects.Rows.Add(kind, amount);
+                       }
+                       
+                    
+                     
+                       System.Console.WriteLine(kind);
+                   }
                    break;
            }
 
@@ -552,9 +827,11 @@ namespace SB_Item_Creator
        {
              // MessageBox.Show(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
               string modinfopath = File.ReadAllText(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
+              LoadedModPath = Path.GetDirectoryName(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
               ModInfo data = JsonConvert.DeserializeObject<ModInfo>(modinfopath);
               LoadModInfo(data);
        }
+       private string LoadedModPath;
 
        private void LoadModInfo(ModInfo data) {
            modauthortxtbox.Text = data.MD.Name;
@@ -563,6 +840,8 @@ namespace SB_Item_Creator
            moddesctxtbox.Text = data.MD.Description;
            moddependlist.DataSource = data.Dependencies;
            modversioncombobox.Text = data.Version;
+           modselectlbl.Text = data.Name;
+          // System.Console.Write(LoadedModPath);
 
        }
 
@@ -583,13 +862,23 @@ namespace SB_Item_Creator
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            Form.ActiveForm.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.CurrentDirectory + "\\icon.ico");
+          
         }
 
         private void amourStatusAddBtn_Click(object sender, EventArgs e)
         {
            
             this.armourStatusEffects.Rows.Add(amourStatusKind.Text, Convert.ToInt32(amourStatusAmount.Text));
+        }
+
+        private void tabControl1_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_VisibleChanged(object sender, EventArgs e)
+        {
+          //  ActiveForm.Icon = 
         }
 
     }
