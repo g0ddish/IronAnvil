@@ -868,7 +868,7 @@ namespace SB_Item_Creator
         private void amourStatusAddBtn_Click(object sender, EventArgs e)
         {
            
-            this.armourStatusEffects.Rows.Add(amourStatusKind.Text, Convert.ToInt32(amourStatusAmount.Text));
+            this.armourStatusEffects.Rows.Add(amourStatusKind.Text, amourStatusAmount.Text);
         }
 
         private void tabControl1_VisibleChanged(object sender, EventArgs e)
