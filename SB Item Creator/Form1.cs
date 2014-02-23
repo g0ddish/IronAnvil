@@ -234,7 +234,7 @@ namespace SB_Item_Creator
                 {
                     Process proc = new Process();
                     proc.StartInfo.FileName = folderBrowserDialog1.SelectedPath + @"\win32\unpack_assets.bat";
-                    File.Copy(folderBrowserDialog1.SelectedPath + "assets/unpacked", Environment.CurrentDirectory + "Data");
+                   // File.Copy(folderBrowserDialog1.SelectedPath + "assets/unpacked", Environment.CurrentDirectory + "Data");
                 }
             }
             else
@@ -487,6 +487,7 @@ namespace SB_Item_Creator
                    itemTypebox.Text = "Armour";
                    break;
                case(".legs"):
+                   AddDefaultTabs();
                    tabControl1.TabPages.Add(Armour);
                    ArmourLegs legs = JsonConvert.DeserializeObject<ArmourLegs>(moditemdata);
                    itemNametxtbox.Text = legs.Name;
@@ -507,6 +508,7 @@ namespace SB_Item_Creator
                    femaleframetxt.Text = legs.FemaleFrames;
                    maleframebox.Image = Image.FromFile(path + "\\" + legs.MaleFrames);
                    femaleframebox.Image = Image.FromFile(path + "\\" + legs.FemaleFrames);
+                   this.armourStatusEffects.Rows.Clear();
                    foreach(JObject se in legs.StatusEffectsString){
                        JToken token = (JToken)se;
                        string kind = (string)token.SelectToken("kind");
