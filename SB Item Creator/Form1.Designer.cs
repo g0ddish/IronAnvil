@@ -38,17 +38,21 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Guntab = new System.Windows.Forms.TabPage();
             this.Maintab = new System.Windows.Forms.TabPage();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.moddependlist = new System.Windows.Forms.ListBox();
             this.moddesctxtbox = new System.Windows.Forms.TextBox();
             this.modauthortxtbox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.moddependtxtbox = new System.Windows.Forms.TextBox();
             this.modversioncombobox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.modpathtxtbox = new System.Windows.Forms.TextBox();
@@ -57,11 +61,7 @@
             this.modnametxtbox = new System.Windows.Forms.TextBox();
             this.modDatalbl = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.saveBtn = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.levelnum = new System.Windows.Forms.NumericUpDown();
             this.label34 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.itemTypebox = new System.Windows.Forms.ComboBox();
             this.raritybox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -94,17 +94,17 @@
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.femaleframetxt = new System.Windows.Forms.TextBox();
+            this.femaleframebox = new System.Windows.Forms.PictureBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.maleframetxt = new System.Windows.Forms.TextBox();
+            this.maleframebox = new System.Windows.Forms.PictureBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.invicopicbox = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.invicotxt = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -163,7 +163,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Bullets = new System.Windows.Forms.ImageList(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.typetxt = new System.Windows.Forms.TextBox();
             this.Recipetab.SuspendLayout();
             this.Maintab.SuspendLayout();
             this.groupBox21.SuspendLayout();
@@ -180,9 +180,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox14.SuspendLayout();
             this.groupBox16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.femaleframebox)).BeginInit();
             this.groupBox15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maleframebox)).BeginInit();
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invicopicbox)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -412,8 +412,20 @@
             this.Maintab.Text = "Main";
             this.Maintab.UseVisualStyleBackColor = true;
             // 
+            // groupBox22
+            // 
+            this.groupBox22.Location = new System.Drawing.Point(371, 508);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(327, 86);
+            this.groupBox22.TabIndex = 25;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Blueprints Learned";
+            this.groupBox22.Enter += new System.EventHandler(this.groupBox22_Enter);
+            // 
             // groupBox21
             // 
+            this.groupBox21.Controls.Add(this.radioButton2);
+            this.groupBox21.Controls.Add(this.radioButton1);
             this.groupBox21.Controls.Add(this.textBox6);
             this.groupBox21.Controls.Add(this.label23);
             this.groupBox21.Location = new System.Drawing.Point(10, 8);
@@ -422,6 +434,28 @@
             this.groupBox21.TabIndex = 24;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Filter";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(285, 31);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(46, 17);
+            this.radioButton2.TabIndex = 4;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Mod";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(204, 31);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(75, 17);
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Unpacked";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // textBox6
             // 
@@ -448,17 +482,19 @@
             this.listBox1.Location = new System.Drawing.Point(8, 71);
             this.listBox1.Name = "listBox1";
             this.listBox1.ScrollAlwaysVisible = true;
-            this.listBox1.Size = new System.Drawing.Size(354, 602);
+            this.listBox1.Size = new System.Drawing.Size(354, 550);
             this.listBox1.TabIndex = 23;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // groupBox18
             // 
+            this.groupBox18.Controls.Add(this.saveBtn);
+            this.groupBox18.Controls.Add(this.moddependlist);
             this.groupBox18.Controls.Add(this.moddesctxtbox);
             this.groupBox18.Controls.Add(this.modauthortxtbox);
             this.groupBox18.Controls.Add(this.label20);
             this.groupBox18.Controls.Add(this.label19);
             this.groupBox18.Controls.Add(this.label18);
-            this.groupBox18.Controls.Add(this.moddependtxtbox);
             this.groupBox18.Controls.Add(this.modversioncombobox);
             this.groupBox18.Controls.Add(this.label14);
             this.groupBox18.Controls.Add(this.modpathtxtbox);
@@ -472,6 +508,24 @@
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Mod Info";
             this.groupBox18.Enter += new System.EventHandler(this.groupBox18_Enter);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(505, 70);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.TabIndex = 18;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // moddependlist
+            // 
+            this.moddependlist.FormattingEnabled = true;
+            this.moddependlist.Location = new System.Drawing.Point(21, 115);
+            this.moddependlist.Name = "moddependlist";
+            this.moddependlist.Size = new System.Drawing.Size(154, 95);
+            this.moddependlist.TabIndex = 13;
             // 
             // moddesctxtbox
             // 
@@ -516,14 +570,6 @@
             this.label18.Size = new System.Drawing.Size(76, 13);
             this.label18.TabIndex = 8;
             this.label18.Text = "Dependencies";
-            // 
-            // moddependtxtbox
-            // 
-            this.moddependtxtbox.Location = new System.Drawing.Point(14, 112);
-            this.moddependtxtbox.Multiline = true;
-            this.moddependtxtbox.Name = "moddependtxtbox";
-            this.moddependtxtbox.Size = new System.Drawing.Size(175, 106);
-            this.moddependtxtbox.TabIndex = 7;
             // 
             // modversioncombobox
             // 
@@ -584,64 +630,23 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.saveBtn);
+            this.groupBox2.Controls.Add(this.listBox2);
             this.groupBox2.Location = new System.Drawing.Point(740, 247);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(170, 143);
+            this.groupBox2.Size = new System.Drawing.Size(208, 265);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "I/O";
             // 
-            // button9
+            // listBox2
             // 
-            this.button9.Location = new System.Drawing.Point(6, 19);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(158, 23);
-            this.button9.TabIndex = 22;
-            this.button9.Text = "Load Mod";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 76);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(158, 23);
-            this.button4.TabIndex = 21;
-            this.button4.Text = "Generate Player.config";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 105);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 23);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Save ModInfo";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(89, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Open";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Location = new System.Drawing.Point(6, 47);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(75, 23);
-            this.saveBtn.TabIndex = 18;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(6, 19);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.ScrollAlwaysVisible = true;
+            this.listBox2.Size = new System.Drawing.Size(185, 238);
+            this.listBox2.TabIndex = 26;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -659,7 +664,7 @@
             this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.levelnum);
             this.groupBox1.Controls.Add(this.label34);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.itemTypebox);
             this.groupBox1.Controls.Add(this.raritybox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label3);
@@ -892,10 +897,10 @@
             this.label34.TabIndex = 19;
             this.label34.Text = "Level:";
             // 
-            // comboBox1
+            // itemTypebox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.itemTypebox.FormattingEnabled = true;
+            this.itemTypebox.Items.AddRange(new object[] {
             "Armour",
             "Coin",
             "Generic",
@@ -906,11 +911,11 @@
             "Melee",
             "Throwable",
             "Tool"});
-            this.comboBox1.Location = new System.Drawing.Point(53, 39);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.itemTypebox.Location = new System.Drawing.Point(53, 39);
+            this.itemTypebox.Name = "itemTypebox";
+            this.itemTypebox.Size = new System.Drawing.Size(160, 21);
+            this.itemTypebox.TabIndex = 0;
+            this.itemTypebox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // raritybox
             // 
@@ -989,7 +994,7 @@
             // groupBox20
             // 
             this.groupBox20.Controls.Add(this.pictureBox2);
-            this.groupBox20.Location = new System.Drawing.Point(428, 251);
+            this.groupBox20.Location = new System.Drawing.Point(644, 12);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(165, 136);
             this.groupBox20.TabIndex = 6;
@@ -1008,7 +1013,7 @@
             // 
             // groupBox17
             // 
-            this.groupBox17.Location = new System.Drawing.Point(293, 251);
+            this.groupBox17.Location = new System.Drawing.Point(815, 12);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(101, 136);
             this.groupBox17.TabIndex = 5;
@@ -1019,9 +1024,9 @@
             // 
             this.groupBox14.Controls.Add(this.groupBox16);
             this.groupBox14.Controls.Add(this.groupBox15);
-            this.groupBox14.Location = new System.Drawing.Point(14, 393);
+            this.groupBox14.Location = new System.Drawing.Point(8, 251);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(578, 166);
+            this.groupBox14.Size = new System.Drawing.Size(917, 421);
             this.groupBox14.TabIndex = 4;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Frames";
@@ -1029,86 +1034,86 @@
             // groupBox16
             // 
             this.groupBox16.Controls.Add(this.button8);
-            this.groupBox16.Controls.Add(this.textBox3);
-            this.groupBox16.Controls.Add(this.pictureBox4);
-            this.groupBox16.Location = new System.Drawing.Point(355, 19);
+            this.groupBox16.Controls.Add(this.femaleframetxt);
+            this.groupBox16.Controls.Add(this.femaleframebox);
+            this.groupBox16.Location = new System.Drawing.Point(459, 19);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(217, 135);
+            this.groupBox16.Size = new System.Drawing.Size(449, 396);
             this.groupBox16.TabIndex = 1;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Female";
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(6, 98);
+            this.button8.Location = new System.Drawing.Point(6, 367);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 6;
             this.button8.Text = "Browse";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // femaleframetxt
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 72);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(154, 20);
-            this.textBox3.TabIndex = 5;
+            this.femaleframetxt.Location = new System.Drawing.Point(6, 341);
+            this.femaleframetxt.Name = "femaleframetxt";
+            this.femaleframetxt.Size = new System.Drawing.Size(154, 20);
+            this.femaleframetxt.TabIndex = 5;
             // 
-            // pictureBox4
+            // femaleframebox
             // 
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(205, 47);
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
+            this.femaleframebox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.femaleframebox.Location = new System.Drawing.Point(6, 19);
+            this.femaleframebox.Name = "femaleframebox";
+            this.femaleframebox.Size = new System.Drawing.Size(434, 316);
+            this.femaleframebox.TabIndex = 5;
+            this.femaleframebox.TabStop = false;
             // 
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.button7);
-            this.groupBox15.Controls.Add(this.textBox2);
-            this.groupBox15.Controls.Add(this.pictureBox3);
+            this.groupBox15.Controls.Add(this.maleframetxt);
+            this.groupBox15.Controls.Add(this.maleframebox);
             this.groupBox15.Location = new System.Drawing.Point(8, 19);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(206, 135);
+            this.groupBox15.Size = new System.Drawing.Size(445, 396);
             this.groupBox15.TabIndex = 0;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Male";
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(5, 98);
+            this.button7.Location = new System.Drawing.Point(6, 367);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 5;
             this.button7.Text = "Browse";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // maleframetxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 72);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(154, 20);
-            this.textBox2.TabIndex = 4;
+            this.maleframetxt.Location = new System.Drawing.Point(5, 341);
+            this.maleframetxt.Name = "maleframetxt";
+            this.maleframetxt.Size = new System.Drawing.Size(154, 20);
+            this.maleframetxt.TabIndex = 4;
             // 
-            // pictureBox3
+            // maleframebox
             // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(5, 19);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(195, 47);
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
+            this.maleframebox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.maleframebox.Location = new System.Drawing.Point(5, 19);
+            this.maleframebox.Name = "maleframebox";
+            this.maleframebox.Size = new System.Drawing.Size(434, 316);
+            this.maleframebox.TabIndex = 4;
+            this.maleframebox.TabStop = false;
             // 
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.invicopicbox);
             this.groupBox13.Controls.Add(this.button6);
             this.groupBox13.Controls.Add(this.label5);
-            this.groupBox13.Controls.Add(this.textBox1);
-            this.groupBox13.Location = new System.Drawing.Point(14, 251);
+            this.groupBox13.Controls.Add(this.invicotxt);
+            this.groupBox13.Location = new System.Drawing.Point(644, 154);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(262, 136);
+            this.groupBox13.Size = new System.Drawing.Size(262, 95);
             this.groupBox13.TabIndex = 3;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Inventory Icon";
@@ -1118,8 +1123,8 @@
             this.invicopicbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.invicopicbox.Location = new System.Drawing.Point(175, 46);
             this.invicopicbox.Name = "invicopicbox";
-            this.invicopicbox.Size = new System.Drawing.Size(47, 46);
-            this.invicopicbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.invicopicbox.Size = new System.Drawing.Size(65, 31);
+            this.invicopicbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.invicopicbox.TabIndex = 3;
             this.invicopicbox.TabStop = false;
             // 
@@ -1136,22 +1141,23 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 42);
+            this.label5.Location = new System.Drawing.Point(3, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 39);
             this.label5.TabIndex = 1;
             this.label5.Text = "Typically in the same directory\r\nSo simply write the file name\r\nExample: Sword150" +
     ".png";
             // 
-            // textBox1
+            // invicotxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 20);
-            this.textBox1.TabIndex = 0;
+            this.invicotxt.Location = new System.Drawing.Point(6, 19);
+            this.invicotxt.Name = "invicotxt";
+            this.invicotxt.Size = new System.Drawing.Size(154, 20);
+            this.invicotxt.TabIndex = 0;
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.typetxt);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.amourStatusAmount);
@@ -1528,7 +1534,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(188, 257);
+            this.label8.Location = new System.Drawing.Point(580, 202);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 13);
             this.label8.TabIndex = 5;
@@ -1536,7 +1542,7 @@
             // 
             // rawrecipe
             // 
-            this.rawrecipe.Location = new System.Drawing.Point(3, 273);
+            this.rawrecipe.Location = new System.Drawing.Point(507, 438);
             this.rawrecipe.Name = "rawrecipe";
             this.rawrecipe.ReadOnly = true;
             this.rawrecipe.Size = new System.Drawing.Size(414, 203);
@@ -1545,7 +1551,7 @@
             // 
             // rawclear
             // 
-            this.rawclear.Location = new System.Drawing.Point(274, 482);
+            this.rawclear.Location = new System.Drawing.Point(664, 381);
             this.rawclear.Name = "rawclear";
             this.rawclear.Size = new System.Drawing.Size(140, 23);
             this.rawclear.TabIndex = 3;
@@ -1559,13 +1565,13 @@
             this.rawcode.Location = new System.Drawing.Point(3, 6);
             this.rawcode.Name = "rawcode";
             this.rawcode.ReadOnly = true;
-            this.rawcode.Size = new System.Drawing.Size(414, 248);
+            this.rawcode.Size = new System.Drawing.Size(461, 593);
             this.rawcode.TabIndex = 2;
             this.rawcode.Text = "";
             // 
             // updatecode
             // 
-            this.updatecode.Location = new System.Drawing.Point(3, 482);
+            this.updatecode.Location = new System.Drawing.Point(507, 308);
             this.updatecode.Name = "updatecode";
             this.updatecode.Size = new System.Drawing.Size(265, 23);
             this.updatecode.TabIndex = 1;
@@ -2002,15 +2008,12 @@
             this.Bullets.Images.SetKeyName(37, "pulse.png");
             this.Bullets.Images.SetKeyName(38, "purpleplasma.png");
             // 
-            // groupBox22
+            // typetxt
             // 
-            this.groupBox22.Location = new System.Drawing.Point(371, 508);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(327, 86);
-            this.groupBox22.TabIndex = 25;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Blueprints Learned";
-            this.groupBox22.Enter += new System.EventHandler(this.groupBox22_Enter);
+            this.typetxt.Location = new System.Drawing.Point(250, 181);
+            this.typetxt.Name = "typetxt";
+            this.typetxt.Size = new System.Drawing.Size(100, 20);
+            this.typetxt.TabIndex = 9;
             // 
             // Form1
             // 
@@ -2022,9 +2025,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.ShowIcon = false;
             this.Text = "Iron Anvil";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.Recipetab.ResumeLayout(false);
             this.Maintab.ResumeLayout(false);
             this.Maintab.PerformLayout();
@@ -2047,10 +2050,10 @@
             this.groupBox14.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.femaleframebox)).EndInit();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maleframebox)).EndInit();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invicopicbox)).EndInit();
@@ -2084,7 +2087,7 @@
         private System.Windows.Forms.TabPage Recipetab;
         private System.Windows.Forms.TabPage Maintab;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox itemTypebox;
         private System.Windows.Forms.ComboBox raritybox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -2132,7 +2135,6 @@
         private System.Windows.Forms.TextBox dropCol2;
         private System.Windows.Forms.TextBox dropCol1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBox5;
@@ -2158,8 +2160,6 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
@@ -2171,19 +2171,18 @@
         private System.Windows.Forms.PictureBox invicopicbox;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox invicotxt;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.Label modDatalbl;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.TextBox femaleframetxt;
+        private System.Windows.Forms.PictureBox femaleframebox;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox maleframetxt;
+        private System.Windows.Forms.PictureBox maleframebox;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Label label6;
@@ -2193,7 +2192,6 @@
         private System.Windows.Forms.TextBox modpathtxtbox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox moddependtxtbox;
         private System.Windows.Forms.TextBox moddesctxtbox;
         private System.Windows.Forms.TextBox modauthortxtbox;
         private System.Windows.Forms.Label label20;
@@ -2213,6 +2211,11 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox moddependlist;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox typetxt;
     }
 }
 

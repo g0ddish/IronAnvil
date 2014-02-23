@@ -12,6 +12,7 @@ using System.Collections.Specialized;
 using System.Collections;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using Newtonsoft.Json.Linq;
 
 namespace SB_Item_Creator
 {
@@ -43,7 +44,7 @@ namespace SB_Item_Creator
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            item = comboBox1.SelectedItem.ToString();
+            item = itemTypebox.SelectedItem.ToString();
             raritybox.Enabled = false;
          
           //  checkedListBox1.Enabled = false;
@@ -102,50 +103,86 @@ namespace SB_Item_Creator
 
         private void updatecode_Click(object sender, EventArgs e)
         {
-            ItemBuilder item = new ItemBuilder();
-            item.AddName(itemNametxtbox.Text);
-            item.SetDropCollisions(dropCol1.Text, dropCol2.Text, dropCol3.Text, dropCol4.Text);
-            item.SetMaxStack(Convert.ToString(maxstack.Value));
-            ArrayList effects = new ArrayList();
-            foreach (DataGridViewRow row in armourStatusEffects.Rows)
+            //  ItemBuilder item = new ItemBuilder();
+            switch (itemTypebox.Text)
             {
-                StatusEffect se = new StatusEffect(row.Cells[0].Value.ToString(), float.Parse(row.Cells[1].Value.ToString()));
-                effects.Add(se);        
+                case ("Armour"):
+                    switch (typetxt.Text)
+                    {
+                        case "chest":
+                            break;
+                        case "head":
+                            break;
+                        case "pants":
+                            ArmourLegs ah = new ArmourLegs();
+                            ah.RefrenceName = itemNametxtbox.Text.Replace(" ", string.Empty).ToLower().Replace("'", string.Empty);
+                            ah.Name = itemNametxtbox.Text;
+                            ah.IconPath = invicotxt.Text;
+
+                            float[] coll = new float[4];
+                            coll[0] = float.Parse(dropCol1.Text);
+                            coll[1] = float.Parse(dropCol2.Text);
+                            coll[2] = float.Parse(dropCol3.Text);
+                            coll[3] = float.Parse(dropCol4.Text);
+                            ah.Collisions = coll;
+                            ah.MaxStack = Convert.ToInt32(maxstack.Value);
+                            ah.Rarity = raritybox.Text;
+                            ah.Description = Description.Text;
+                            ah.InspectionKind = "armor";
+                            ah.MaleFrames = maleframetxt.Text;
+                            ah.FemaleFrames = femaleframetxt.Text;
+                            //ah.StatusEffectsString
+                            ArrayList sees = new ArrayList();
+                            foreach (DataGridViewRow se in armourStatusEffects.Rows)
+                            {
+                                se.Cells[0].FormattedValue.ToString();
+                                StatusEffect see = new StatusEffect();
+                                see.Kind = se.Cells[0].FormattedValue.ToString();
+                                see.Amount = Convert.ToInt32(se.Cells[1].Value.ToString());
+                                try {
+                               //  see.Level = se.Cells[2].Value.ToString();
+                                     sees.Add(see);
+                                }
+                                catch(Exception l){
+                                  sees.Add(see);
+                                }
+                              
+                           
+                            }
+                            ah.StatusEffectsString = sees;
+
+                            var json = JsonConvert.SerializeObject(ah, Formatting.Indented);
+                            Console.Write(json);
+                            rawcode.Text = json;
+
+
+                            break;
+                        case ("Coin"):
+                            break;
+                        case ("Generic"):
+                            break;
+                        case ("Gun"):
+                            break;
+                        case ("Instrument"):
+                            break;
+                        case ("Material"):
+                            break;
+                        case ("Shield"):
+                            break;
+                        case ("Melee"):
+                            break;
+                        case ("Throwable"):
+                            break;
+                        case ("Tool"):
+                            break;
+                        default:
+                            break;
+
+                    }
+                    break;
+
+
             }
-            item.SetStatusEffects(effects);
-            item.SetMainDesc(maindesc.Text);
-            if (apexdesc.Text != string.Empty) {
-                item.SetDesc("Apex", apexdesc.Text);
-            }
-            if (aviandesc.Text != string.Empty)
-            {
-                item.SetDesc("Avian", aviandesc.Text);
-            }
-            if (florandesc.Text != string.Empty)
-            {
-                item.SetDesc("Floran", florandesc.Text);
-            }
-            if (glitchdesc.Text != string.Empty)
-            {
-                item.SetDesc("Glitch", glitchdesc.Text);
-            }
-            if (humandesc.Text != string.Empty)
-            {
-                item.SetDesc("Human", humandesc.Text);
-            }
-            if (hylotldesc.Text != string.Empty)
-            {
-                item.SetDesc("Hylotl", hylotldesc.Text);
-            }
-  
-            
-           // armourStatusEffects.data
-            //item.SetRarity()
-          //  item.SetDesc();
-          //  item.SetShortDesc();
-            
-            rawcode.Text = item.Output();
-               
         }
 
 
@@ -175,32 +212,54 @@ namespace SB_Item_Creator
        private TabPage Description = new TabPage();
        private TabPage Code = new TabPage();
 
+        private string StarboundPath;
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (File.Exists("C:\\Program Files (x86)\\Steam\\Steam.exe"))
+          
+            this.listBox1.MouseDoubleClick += new MouseEventHandler(listBox1_MouseDoubleClick);
+            this.listBox2.MouseDoubleClick += new MouseEventHandler(listBox2_MouseDoubleClick);
+            if (File.Exists("C:\\Program Files (x86)\\Steam\\Steam.exe"))  //Checks for steam installion and bit
             {
-                folderBrowserDialog1.SelectedPath = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Starbound\\mods";
+                folderBrowserDialog1.SelectedPath = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Starbound\\";
             }
             else if (File.Exists("C:\\Program Files\\Steam\\Steam.exe"))
             {
-                folderBrowserDialog1.SelectedPath = "C:\\Program Files\\Steam\\SteamApps\\common\\Starbound\\mods";
+                folderBrowserDialog1.SelectedPath = "C:\\Program Files\\Steam\\SteamApps\\common\\Starbound\\";
             }
-            if (!Directory.Exists(Environment.CurrentDirectory + "Data")) {
+            if (!Directory.Exists(folderBrowserDialog1.SelectedPath + "assets\\unpacked"))          //Looks for unpacked assets and unpack
+            {
                 MessageBox.Show("This requires the Starbound data to run please select the Starbound folder");
                 if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    Console.Write(folderBrowserDialog1.SelectedPath);
-                 //   Process.Start();
                     Process proc = new Process();
                     proc.StartInfo.FileName = folderBrowserDialog1.SelectedPath + @"\win32\unpack_assets.bat";
-                   
-
-
-
-File.Copy(folderBrowserDialog1.SelectedPath + "assets/unpacked", Environment.CurrentDirectory + "Data");
-    
+                    File.Copy(folderBrowserDialog1.SelectedPath + "assets/unpacked", Environment.CurrentDirectory + "Data");
                 }
                }
+
+            String[] allfiles = System.IO.Directory.GetFiles(folderBrowserDialog1.SelectedPath + "mods", "*.modinfo", System.IO.SearchOption.AllDirectories);
+                int i = 0;
+                foreach(string remove in allfiles){
+                    allfiles[i] = remove.Replace(folderBrowserDialog1.SelectedPath + "mods\\", string.Empty);
+                    i++;
+                }
+                string path = folderBrowserDialog1.SelectedPath + "\\assets\\unpacked";
+                String[] allfile = System.IO.Directory.GetFiles(path, "*.*", System.IO.SearchOption.AllDirectories);
+                String[] items2 = allfile.Select(x => x.Replace(path, string.Empty)).ToArray();
+                listBox1.DataSource = items2;
+
+                object[] objCollection = new object[listBox1.Items.Count];
+                listBox1.Items.CopyTo(objCollection, 0);
+                String search = textBox6.Text;
+                foreach (object str in objCollection)
+                {
+
+                    allfs.Add(str.ToString());
+                }
+
+                StarboundPath = folderBrowserDialog1.SelectedPath;
+            listBox2.DataSource = allfiles;
             Main = tabControl1.TabPages["Maintab"];
             Armour = tabControl1.TabPages["ArmourTab"];
             Melee = tabControl1.TabPages["Meleetab"];
@@ -270,19 +329,7 @@ File.Copy(folderBrowserDialog1.SelectedPath + "assets/unpacked", Environment.Cur
                 openFileDialog1.InitialDirectory = folderBrowserDialog1.SelectedPath;
                 openFileDialog1.FileName = string.Empty;
                     string path  = folderBrowserDialog1.SelectedPath;
-                    String[] allfiles = System.IO.Directory.GetFiles(path, "*.*", System.IO.SearchOption.AllDirectories);
-                    String[] items2 = allfiles.Select(x => x.Replace(path, string.Empty)).ToArray();
-                    listBox1.DataSource = items2;
-
-                     object[] objCollection = new object[listBox1.Items.Count];
-                listBox1.Items.CopyTo(objCollection, 0);
-                String search = textBox6.Text;
-                foreach (object str in objCollection)
-                {
-                 
-                        allfs.Add(str.ToString());
-                    }
-
+                   
                   
                 modDatalbl.Text = path;
                string[] files = System.IO.Directory.GetFiles(path, "*.modinfo");
@@ -424,6 +471,113 @@ File.Copy(folderBrowserDialog1.SelectedPath + "assets/unpacked", Environment.Cur
         private void groupBox22_Enter(object sender, EventArgs e)
         {
 
+        }
+
+       private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+              
+                string moditemdata = File.ReadAllText(StarboundPath + "assets\\unpacked\\" + listBox1.SelectedItem.ToString());
+                string itemextention = Path.GetExtension(StarboundPath + "assets\\unpacked\\" + listBox1.SelectedItem.ToString());
+           switch(itemextention){
+               case(".chest"):
+                   itemTypebox.Text = "Armour";
+                   break;
+               case(".legs"):
+                   tabControl1.TabPages.Add(Armour);
+                   ArmourLegs legs = JsonConvert.DeserializeObject<ArmourLegs>(moditemdata);
+                   itemNametxtbox.Text = legs.Name;
+                   maxstack.Value = legs.MaxStack;
+                   raritybox.Text = legs.Rarity;
+                   dropCol1.Text = legs.Collisions[0].ToString();
+                   dropCol2.Text = legs.Collisions[1].ToString();
+                   dropCol3.Text = legs.Collisions[2].ToString();
+                   dropCol4.Text = legs.Collisions[3].ToString();
+                   itemTypebox.Text = "Armour";
+                   string path =Path.GetDirectoryName(StarboundPath + "assets\\unpacked\\" + listBox1.SelectedItem.ToString());
+                    string[] file =  legs.IconPath.Split(':');
+                   invicopicbox.Image = Image.FromFile(path + "\\" + file[0]);
+
+                   invicotxt.Text = file[0];
+                   typetxt.Text = file[1];
+                   maleframetxt.Text = legs.MaleFrames;
+                   femaleframetxt.Text = legs.FemaleFrames;
+                   maleframebox.Image = Image.FromFile(path + "\\" + legs.MaleFrames);
+                   femaleframebox.Image = Image.FromFile(path + "\\" + legs.FemaleFrames);
+                   foreach(JObject se in legs.StatusEffectsString){
+                       JToken token = (JToken)se;
+                       string kind = (string)token.SelectToken("kind");
+                       int amount = (int)token.SelectToken("amount");
+                       if (token.SelectToken("level") != null)
+                       {
+                           int level = (int)token.SelectToken("level");
+                           this.armourStatusEffects.Rows.Add(kind, amount, level);
+
+                       }
+                       else {
+                          this.armourStatusEffects.Rows.Add(kind, amount);
+                       }
+                       
+                    
+                     
+                       System.Console.WriteLine(kind);
+                   }
+                   
+                   
+                   break;
+               case(".head"):
+                   itemTypebox.Text = "Armour";
+                   break;
+           }
+
+
+     
+        }
+
+        private void LoadArmour(object armour){
+        switch(armour.GetType().ToString()){
+            case("ArmourLegs"):
+                ArmourLegs legs = (ArmourLegs)armour;
+               
+                break;
+        }
+        }
+
+       private void listBox2_MouseDoubleClick(object sender, MouseEventArgs e)
+       {
+             // MessageBox.Show(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
+              string modinfopath = File.ReadAllText(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
+              ModInfo data = JsonConvert.DeserializeObject<ModInfo>(modinfopath);
+              LoadModInfo(data);
+       }
+
+       private void LoadModInfo(ModInfo data) {
+           modauthortxtbox.Text = data.MD.Name;
+           modnametxtbox.Text = data.Name;
+           modpathtxtbox.Text = data.Path;
+           moddesctxtbox.Text = data.MD.Description;
+           moddependlist.DataSource = data.Dependencies;
+           modversioncombobox.Text = data.Version;
+
+       }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            Form.ActiveForm.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.CurrentDirectory + "\\icon.ico");
         }
 
     }
