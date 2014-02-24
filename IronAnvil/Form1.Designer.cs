@@ -47,6 +47,7 @@ namespace SB_Item_Creator
             this.label23 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.moddependlist = new System.Windows.Forms.ListBox();
             this.moddesctxtbox = new System.Windows.Forms.TextBox();
@@ -62,6 +63,10 @@ namespace SB_Item_Creator
             this.modnametxtbox = new System.Windows.Forms.TextBox();
             this.modDatalbl = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.modselectlbl = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -94,10 +99,22 @@ namespace SB_Item_Creator
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.frontftxt = new System.Windows.Forms.TextBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.backftxt = new System.Windows.Forms.TextBox();
+            this.frontfpic = new System.Windows.Forms.PictureBox();
+            this.backfpic = new System.Windows.Forms.PictureBox();
             this.button8 = new System.Windows.Forms.Button();
             this.femaleframetxt = new System.Windows.Forms.TextBox();
             this.femaleframebox = new System.Windows.Forms.PictureBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.backmtxt = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.frontmtxt = new System.Windows.Forms.TextBox();
+            this.frontmpic = new System.Windows.Forms.PictureBox();
+            this.backmpic = new System.Windows.Forms.PictureBox();
             this.button7 = new System.Windows.Forms.Button();
             this.maleframetxt = new System.Windows.Forms.TextBox();
             this.maleframebox = new System.Windows.Forms.PictureBox();
@@ -107,6 +124,13 @@ namespace SB_Item_Creator
             this.label5 = new System.Windows.Forms.Label();
             this.invicotxt = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.typetxt = new System.Windows.Forms.ComboBox();
+            this.masktxtbox = new System.Windows.Forms.TextBox();
+            this.facemaskpic = new System.Windows.Forms.PictureBox();
+            this.armourStatusEffects = new System.Windows.Forms.DataGridView();
+            this.test = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.amourStatusAmount = new System.Windows.Forms.TextBox();
@@ -160,30 +184,6 @@ namespace SB_Item_Creator
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Bullets = new System.Windows.Forms.ImageList(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.armourStatusEffects = new System.Windows.Forms.DataGridView();
-            this.test = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.facemaskpic = new System.Windows.Forms.PictureBox();
-            this.masktxtbox = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.modselectlbl = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.backmpic = new System.Windows.Forms.PictureBox();
-            this.frontmpic = new System.Windows.Forms.PictureBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.frontmtxt = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.backmtxt = new System.Windows.Forms.TextBox();
-            this.backfpic = new System.Windows.Forms.PictureBox();
-            this.frontfpic = new System.Windows.Forms.PictureBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.backftxt = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.frontftxt = new System.Windows.Forms.TextBox();
-            this.typetxt = new System.Windows.Forms.ComboBox();
             this.Recipetab.SuspendLayout();
             this.Maintab.SuspendLayout();
             this.groupBox21.SuspendLayout();
@@ -200,12 +200,18 @@ namespace SB_Item_Creator
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox14.SuspendLayout();
             this.groupBox16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frontfpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backfpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.femaleframebox)).BeginInit();
             this.groupBox15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frontmpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backmpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maleframebox)).BeginInit();
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invicopicbox)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.facemaskpic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.armourStatusEffects)).BeginInit();
             this.Iconmodeltab.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -216,12 +222,6 @@ namespace SB_Item_Creator
             this.Meleetab.SuspendLayout();
             this.groupBox19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meleeinvicon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.armourStatusEffects)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.facemaskpic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.backmpic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frontmpic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.backfpic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frontfpic)).BeginInit();
             this.SuspendLayout();
             // 
             // Butt
@@ -535,6 +535,15 @@ namespace SB_Item_Creator
             this.groupBox18.Text = "Mod Info";
             this.groupBox18.Enter += new System.EventHandler(this.groupBox18_Enter);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(372, 41);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 19;
+            this.button4.Text = "Build Pak";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // saveBtn
             // 
             this.saveBtn.Location = new System.Drawing.Point(271, 41);
@@ -667,6 +676,42 @@ namespace SB_Item_Creator
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "I/O";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(127, 367);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "Clear";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 367);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Save Item";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // modselectlbl
+            // 
+            this.modselectlbl.AutoSize = true;
+            this.modselectlbl.Location = new System.Drawing.Point(17, 307);
+            this.modselectlbl.Name = "modselectlbl";
+            this.modselectlbl.Size = new System.Drawing.Size(7, 13);
+            this.modselectlbl.TabIndex = 28;
+            this.modselectlbl.Text = "\r\n";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(17, 270);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(159, 26);
+            this.label24.TabIndex = 27;
+            this.label24.Text = "Files will be saved in this mod dir\r\nMod selected:";
             // 
             // listBox2
             // 
@@ -1080,6 +1125,56 @@ namespace SB_Item_Creator
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Female";
             // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(6, 367);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 12;
+            this.button13.Text = "Browse";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // frontftxt
+            // 
+            this.frontftxt.Location = new System.Drawing.Point(6, 350);
+            this.frontftxt.Name = "frontftxt";
+            this.frontftxt.Size = new System.Drawing.Size(154, 20);
+            this.frontftxt.TabIndex = 11;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(202, 183);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 10;
+            this.button12.Text = "Browse";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // backftxt
+            // 
+            this.backftxt.Location = new System.Drawing.Point(202, 157);
+            this.backftxt.Name = "backftxt";
+            this.backftxt.Size = new System.Drawing.Size(154, 20);
+            this.backftxt.TabIndex = 9;
+            // 
+            // frontfpic
+            // 
+            this.frontfpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frontfpic.Location = new System.Drawing.Point(6, 212);
+            this.frontfpic.Name = "frontfpic";
+            this.frontfpic.Size = new System.Drawing.Size(171, 132);
+            this.frontfpic.TabIndex = 8;
+            this.frontfpic.TabStop = false;
+            // 
+            // backfpic
+            // 
+            this.backfpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backfpic.Location = new System.Drawing.Point(202, 19);
+            this.backfpic.Name = "backfpic";
+            this.backfpic.Size = new System.Drawing.Size(171, 132);
+            this.backfpic.TabIndex = 7;
+            this.backfpic.TabStop = false;
+            // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(11, 183);
@@ -1122,6 +1217,56 @@ namespace SB_Item_Creator
             this.groupBox15.TabIndex = 0;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Male";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(187, 169);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 11;
+            this.button11.Text = "Browse";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // backmtxt
+            // 
+            this.backmtxt.Location = new System.Drawing.Point(186, 143);
+            this.backmtxt.Name = "backmtxt";
+            this.backmtxt.Size = new System.Drawing.Size(154, 20);
+            this.backmtxt.TabIndex = 10;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(6, 347);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "Browse";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // frontmtxt
+            // 
+            this.frontmtxt.Location = new System.Drawing.Point(5, 322);
+            this.frontmtxt.Name = "frontmtxt";
+            this.frontmtxt.Size = new System.Drawing.Size(154, 20);
+            this.frontmtxt.TabIndex = 8;
+            // 
+            // frontmpic
+            // 
+            this.frontmpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frontmpic.Location = new System.Drawing.Point(3, 198);
+            this.frontmpic.Name = "frontmpic";
+            this.frontmpic.Size = new System.Drawing.Size(156, 118);
+            this.frontmpic.TabIndex = 7;
+            this.frontmpic.TabStop = false;
+            // 
+            // backmpic
+            // 
+            this.backmpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backmpic.Location = new System.Drawing.Point(186, 19);
+            this.backmpic.Name = "backmpic";
+            this.backmpic.Size = new System.Drawing.Size(156, 118);
+            this.backmpic.TabIndex = 6;
+            this.backmpic.TabStop = false;
             // 
             // button7
             // 
@@ -1220,13 +1365,63 @@ namespace SB_Item_Creator
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Armour Status Effects";
             // 
+            // typetxt
+            // 
+            this.typetxt.FormattingEnabled = true;
+            this.typetxt.Location = new System.Drawing.Point(218, 153);
+            this.typetxt.Name = "typetxt";
+            this.typetxt.Size = new System.Drawing.Size(121, 21);
+            this.typetxt.TabIndex = 13;
+            // 
+            // masktxtbox
+            // 
+            this.masktxtbox.Location = new System.Drawing.Point(28, 197);
+            this.masktxtbox.Name = "masktxtbox";
+            this.masktxtbox.Size = new System.Drawing.Size(83, 20);
+            this.masktxtbox.TabIndex = 12;
+            // 
+            // facemaskpic
+            // 
+            this.facemaskpic.Location = new System.Drawing.Point(24, 130);
+            this.facemaskpic.Name = "facemaskpic";
+            this.facemaskpic.Size = new System.Drawing.Size(60, 51);
+            this.facemaskpic.TabIndex = 11;
+            this.facemaskpic.TabStop = false;
+            // 
+            // armourStatusEffects
+            // 
+            this.armourStatusEffects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.armourStatusEffects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.test,
+            this.Column1,
+            this.Column2});
+            this.armourStatusEffects.Location = new System.Drawing.Point(234, 15);
+            this.armourStatusEffects.Name = "armourStatusEffects";
+            this.armourStatusEffects.Size = new System.Drawing.Size(351, 121);
+            this.armourStatusEffects.TabIndex = 10;
+            // 
+            // test
+            // 
+            this.test.HeaderText = "Kind";
+            this.test.Name = "test";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Amount";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Level";
+            this.Column2.Name = "Column2";
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(457, 154);
+            this.button3.Location = new System.Drawing.Point(485, 154);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(128, 23);
+            this.button3.Size = new System.Drawing.Size(100, 23);
             this.button3.TabIndex = 8;
-            this.button3.Text = "Load Basic Armour";
+            this.button3.Text = "Load Default";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -2023,201 +2218,6 @@ namespace SB_Item_Creator
             this.Bullets.Images.SetKeyName(37, "pulse.png");
             this.Bullets.Images.SetKeyName(38, "purpleplasma.png");
             // 
-            // armourStatusEffects
-            // 
-            this.armourStatusEffects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.armourStatusEffects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.test,
-            this.Column1,
-            this.Column2});
-            this.armourStatusEffects.Location = new System.Drawing.Point(234, 15);
-            this.armourStatusEffects.Name = "armourStatusEffects";
-            this.armourStatusEffects.Size = new System.Drawing.Size(351, 121);
-            this.armourStatusEffects.TabIndex = 10;
-            // 
-            // test
-            // 
-            this.test.HeaderText = "Kind";
-            this.test.Name = "test";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Amount";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Level";
-            this.Column2.Name = "Column2";
-            // 
-            // facemaskpic
-            // 
-            this.facemaskpic.Location = new System.Drawing.Point(24, 130);
-            this.facemaskpic.Name = "facemaskpic";
-            this.facemaskpic.Size = new System.Drawing.Size(60, 51);
-            this.facemaskpic.TabIndex = 11;
-            this.facemaskpic.TabStop = false;
-            // 
-            // masktxtbox
-            // 
-            this.masktxtbox.Location = new System.Drawing.Point(28, 197);
-            this.masktxtbox.Name = "masktxtbox";
-            this.masktxtbox.Size = new System.Drawing.Size(83, 20);
-            this.masktxtbox.TabIndex = 12;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(17, 270);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(159, 26);
-            this.label24.TabIndex = 27;
-            this.label24.Text = "Files will be saved in this mod dir\r\nMod selected:";
-            // 
-            // modselectlbl
-            // 
-            this.modselectlbl.AutoSize = true;
-            this.modselectlbl.Location = new System.Drawing.Point(17, 307);
-            this.modselectlbl.Name = "modselectlbl";
-            this.modselectlbl.Size = new System.Drawing.Size(7, 13);
-            this.modselectlbl.TabIndex = 28;
-            this.modselectlbl.Text = "\r\n";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 367);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Save Item";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(127, 367);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(372, 41);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "Build Pak";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // backmpic
-            // 
-            this.backmpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.backmpic.Location = new System.Drawing.Point(186, 19);
-            this.backmpic.Name = "backmpic";
-            this.backmpic.Size = new System.Drawing.Size(156, 118);
-            this.backmpic.TabIndex = 6;
-            this.backmpic.TabStop = false;
-            // 
-            // frontmpic
-            // 
-            this.frontmpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.frontmpic.Location = new System.Drawing.Point(3, 198);
-            this.frontmpic.Name = "frontmpic";
-            this.frontmpic.Size = new System.Drawing.Size(156, 118);
-            this.frontmpic.TabIndex = 7;
-            this.frontmpic.TabStop = false;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(6, 347);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "Browse";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // frontmtxt
-            // 
-            this.frontmtxt.Location = new System.Drawing.Point(5, 322);
-            this.frontmtxt.Name = "frontmtxt";
-            this.frontmtxt.Size = new System.Drawing.Size(154, 20);
-            this.frontmtxt.TabIndex = 8;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(187, 169);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 11;
-            this.button11.Text = "Browse";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // backmtxt
-            // 
-            this.backmtxt.Location = new System.Drawing.Point(186, 143);
-            this.backmtxt.Name = "backmtxt";
-            this.backmtxt.Size = new System.Drawing.Size(154, 20);
-            this.backmtxt.TabIndex = 10;
-            // 
-            // backfpic
-            // 
-            this.backfpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.backfpic.Location = new System.Drawing.Point(202, 19);
-            this.backfpic.Name = "backfpic";
-            this.backfpic.Size = new System.Drawing.Size(171, 132);
-            this.backfpic.TabIndex = 7;
-            this.backfpic.TabStop = false;
-            // 
-            // frontfpic
-            // 
-            this.frontfpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.frontfpic.Location = new System.Drawing.Point(6, 212);
-            this.frontfpic.Name = "frontfpic";
-            this.frontfpic.Size = new System.Drawing.Size(171, 132);
-            this.frontfpic.TabIndex = 8;
-            this.frontfpic.TabStop = false;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(202, 183);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
-            this.button12.TabIndex = 10;
-            this.button12.Text = "Browse";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // backftxt
-            // 
-            this.backftxt.Location = new System.Drawing.Point(202, 157);
-            this.backftxt.Name = "backftxt";
-            this.backftxt.Size = new System.Drawing.Size(154, 20);
-            this.backftxt.TabIndex = 9;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(6, 367);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 23);
-            this.button13.TabIndex = 12;
-            this.button13.Text = "Browse";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // frontftxt
-            // 
-            this.frontftxt.Location = new System.Drawing.Point(6, 350);
-            this.frontftxt.Name = "frontftxt";
-            this.frontftxt.Size = new System.Drawing.Size(154, 20);
-            this.frontftxt.TabIndex = 11;
-            // 
-            // typetxt
-            // 
-            this.typetxt.FormattingEnabled = true;
-            this.typetxt.Location = new System.Drawing.Point(218, 153);
-            this.typetxt.Name = "typetxt";
-            this.typetxt.Size = new System.Drawing.Size(121, 21);
-            this.typetxt.TabIndex = 13;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2228,6 +2228,7 @@ namespace SB_Item_Creator
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.Text = "Iron Anvil";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
@@ -2255,15 +2256,21 @@ namespace SB_Item_Creator
             this.groupBox14.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frontfpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backfpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.femaleframebox)).EndInit();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frontmpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backmpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maleframebox)).EndInit();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invicopicbox)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.facemaskpic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.armourStatusEffects)).EndInit();
             this.Iconmodeltab.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
@@ -2280,12 +2287,6 @@ namespace SB_Item_Creator
             this.groupBox19.ResumeLayout(false);
             this.groupBox19.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meleeinvicon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.armourStatusEffects)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.facemaskpic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.backmpic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frontmpic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.backfpic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.frontfpic)).EndInit();
             this.ResumeLayout(false);
 
         }
