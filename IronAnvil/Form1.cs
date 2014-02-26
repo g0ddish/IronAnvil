@@ -46,34 +46,29 @@ namespace SB_Item_Creator
         {
             item = itemTypebox.SelectedItem.ToString();
             raritybox.Enabled = false;
-         
-          //  checkedListBox1.Enabled = false;
-            if (item == "Gun")
-            {
+            switch(item){
+                case("Gun"):
                 raritybox.Enabled = true;
-              
-            }
-            else if (item == "Armour")
-            {
+                break;
+                case("Armour"): 
                 raritybox.Enabled = true;
-                
                 AddDefaultTabs();
-                tabControl1.TabPages.Add(Armour);
-               // tabControl1.TabPages.Add(Icon);
-                tabControl1.TabPages.Add(Description);
-                
-            }
-            else if (item == "Melee")
-            {
-                tabControl1.TabPages.Add(Melee);
+                tabControl1.TabPages.Add(ArmourTab);
+                tabControl1.TabPages.Add(Descriptiontab);
+                break;
+                case("Coin"):
                 raritybox.Enabled = true;
-            }
-            else if (item == "Building Block")
-            {
-            }
-            else if (item == "Shield")
-            {
-                raritybox.Enabled = true;
+                AddDefaultTabs();
+                tabControl1.TabPages.Add(Cointab);
+                tabControl1.TabPages.Add(Descriptiontab);
+                    break;
+                    case("Melee"):
+                    break;
+                    case("Building Block"):
+                    break;
+                    case("Shield"):
+                    break;
+            
             }
         }
 
@@ -101,9 +96,7 @@ namespace SB_Item_Creator
             Value.maxstack = maxstack.Text; 
         }
 
-        private void updatecode_Click(object sender, EventArgs e)
-        {
-            //  ItemBuilder item = new ItemBuilder();
+        private void Update() {
             float[] coll = new float[4];
             int i = 1;
             ArrayList sees = new ArrayList();
@@ -115,11 +108,9 @@ namespace SB_Item_Creator
                     {
                         case "chest":
                             ArmourChest chest = new ArmourChest();
-                            chest.RefrenceName = itemNametxtbox.Text.Replace(" ", string.Empty).ToLower().Replace("'", string.Empty);
+                            chest.RefrenceName = System.Text.RegularExpressions.Regex.Replace(itemNametxtbox.Text, @"[^a-zA-Z0-9]", "").ToLowerInvariant();
                             chest.Name = itemNametxtbox.Text;
                             chest.IconPath = invicotxt.Text;
-                            
-                            
                             coll[0] = float.Parse(dropCol1.Text);
                             coll[1] = float.Parse(dropCol2.Text);
                             coll[2] = float.Parse(dropCol3.Text);
@@ -127,7 +118,7 @@ namespace SB_Item_Creator
                             chest.Collisions = coll;
                             chest.MaxStack = Convert.ToInt32(maxstack.Value);
                             chest.Rarity = raritybox.Text;
-                            chest.Description = Description.Text;
+                            chest.Description = maindesc.Text;
                             chest.InspectionKind = "armor";
                             Frames male = new Frames();
                             male.Body = maleframetxt.Text;
@@ -139,10 +130,7 @@ namespace SB_Item_Creator
                             female.FrontS = frontftxt.Text;
                             chest.MFrames = male;
                             chest.FFrames = female;
-                  
-                            //ah.StatusEffectsString
-                           
-                     
+
                             foreach (DataGridViewRow se in armourStatusEffects.Rows)
                             {
                                 if (se.Cells[0].Value != null && se.Cells[1].Value != null)
@@ -153,22 +141,16 @@ namespace SB_Item_Creator
                                     string str = se.Cells[i].Value.ToString();
                                     see.Amount = Convert.ToInt32(str);
                                     System.Console.Write(str);
-                                    // see.Amount = a;
-                                    //  i++;
                                     try
                                     {
-                                        //  see.Level = se.Cells[2].Value.ToString();
                                         sees.Add(see);
                                     }
                                     catch (Exception l)
                                     {
                                         sees.Add(see);
                                     }
-
-
                                 }
                                 chest.StatusEffectsString = sees;
-
                                 var json = JsonConvert.SerializeObject(chest, Formatting.Indented);
                                 Console.Write(json);
                                 rawcode.Text = json;
@@ -176,11 +158,10 @@ namespace SB_Item_Creator
                             break;
                         case "head":
                             ArmourHead ahead = new ArmourHead();
-                            ahead.RefrenceName = itemNametxtbox.Text.Replace(" ", string.Empty).ToLower().Replace("'", string.Empty);
+                            ahead.RefrenceName = System.Text.RegularExpressions.Regex.Replace(itemNametxtbox.Text, @"[^a-zA-Z0-9]", "").ToLowerInvariant();
                             ahead.Name = itemNametxtbox.Text;
                             ahead.IconPath = invicotxt.Text;
                             ahead.Mask = masktxtbox.Text;
-                            
                             coll[0] = float.Parse(dropCol1.Text);
                             coll[1] = float.Parse(dropCol2.Text);
                             coll[2] = float.Parse(dropCol3.Text);
@@ -188,13 +169,11 @@ namespace SB_Item_Creator
                             ahead.Collisions = coll;
                             ahead.MaxStack = Convert.ToInt32(maxstack.Value);
                             ahead.Rarity = raritybox.Text;
-                            ahead.Description = Description.Text;
+                            ahead.Description = maindesc.Text;
                             ahead.InspectionKind = "armor";
                             ahead.MaleFrames = maleframetxt.Text;
                             ahead.FemaleFrames = femaleframetxt.Text;
-                            //ah.StatusEffectsString
-                           
-                     
+
                             foreach (DataGridViewRow se in armourStatusEffects.Rows)
                             {
                                 if (se.Cells[0].Value != null && se.Cells[1].Value != null)
@@ -205,22 +184,16 @@ namespace SB_Item_Creator
                                     string str = se.Cells[i].Value.ToString();
                                     see.Amount = Convert.ToInt32(str);
                                     System.Console.Write(str);
-                                    // see.Amount = a;
-                                    //  i++;
                                     try
                                     {
-                                        //  see.Level = se.Cells[2].Value.ToString();
                                         sees.Add(see);
                                     }
                                     catch (Exception l)
                                     {
                                         sees.Add(see);
                                     }
-
-
                                 }
                                 ahead.StatusEffectsString = sees;
-
                                 var json = JsonConvert.SerializeObject(ahead, Formatting.Indented);
                                 Console.Write(json);
                                 rawcode.Text = json;
@@ -228,11 +201,9 @@ namespace SB_Item_Creator
                             break;
                         case "pants":
                             ArmourLegs ah = new ArmourLegs();
-                            ah.RefrenceName = itemNametxtbox.Text.Replace(" ", string.Empty).ToLower().Replace("'", string.Empty);
+                            ah.RefrenceName = System.Text.RegularExpressions.Regex.Replace(itemNametxtbox.Text, @"[^a-zA-Z0-9]", "").ToLowerInvariant();
                             ah.Name = itemNametxtbox.Text;
                             ah.IconPath = invicotxt.Text;
-
-                            
                             coll[0] = float.Parse(dropCol1.Text);
                             coll[1] = float.Parse(dropCol2.Text);
                             coll[2] = float.Parse(dropCol3.Text);
@@ -240,13 +211,10 @@ namespace SB_Item_Creator
                             ah.Collisions = coll;
                             ah.MaxStack = Convert.ToInt32(maxstack.Value);
                             ah.Rarity = raritybox.Text;
-                            ah.Description = Description.Text;
+                            ah.Description = maindesc.Text;
                             ah.InspectionKind = "armor";
                             ah.MaleFrames = maleframetxt.Text;
                             ah.FemaleFrames = femaleframetxt.Text;
-                            //ah.StatusEffectsString
-                            
-                           
                             foreach (DataGridViewRow se in armourStatusEffects.Rows)
                             {
                                 if (se.Cells[0].Value != null && se.Cells[1].Value != null)
@@ -257,27 +225,20 @@ namespace SB_Item_Creator
                                     string str = se.Cells[i].Value.ToString();
                                     see.Amount = Convert.ToInt32(str);
                                     System.Console.Write(str);
-                                    // see.Amount = a;
-                                    //  i++;
                                     try
                                     {
-                                        //  see.Level = se.Cells[2].Value.ToString();
                                         sees.Add(see);
                                     }
                                     catch (Exception l)
                                     {
                                         sees.Add(see);
                                     }
-
-
                                 }
                                 ah.StatusEffectsString = sees;
-
                                 var json = JsonConvert.SerializeObject(ah, Formatting.Indented);
                                 Console.Write(json);
                                 rawcode.Text = json;
                             }
-
                             break;
                         case ("Coin"):
                             break;
@@ -299,15 +260,15 @@ namespace SB_Item_Creator
                             break;
                         default:
                             break;
-
                     }
                     break;
-
-
             }
         }
 
-
+        private void updatecode_Click(object sender, EventArgs e)
+        {
+            Update();
+        }
 
         private void rawclear_Click(object sender, EventArgs e)
         {
@@ -321,18 +282,6 @@ namespace SB_Item_Creator
            "JumpBoostInitiator","MollyHealing1","MollyHealing2","MollyHealing3","Nude","Overheated","PowerBoost","Protection","RedStim","ReduceFallDamage","RingOfPower","RunBoost","RunBoostInitiator","Shield",
            "ShieldSuppressed","Slow","Spiked","SugarRush","SwimBoost","TestBurning","TestMagma","TestPoison","Warmth","UnderCooled"         };
 
-
-
-
-       private TabPage Main = new TabPage();
-       private TabPage Armour = new TabPage();
-       private TabPage Icon = new TabPage();
-       private TabPage Gun = new TabPage();
-       private TabPage Melee = new TabPage();
-       private TabPage Projectile = new TabPage();
-       private TabPage Recipe = new TabPage();
-       private TabPage Description = new TabPage();
-       private TabPage Code = new TabPage();
 
         private string StarboundPath;
         private string AssetFolder;
@@ -410,6 +359,7 @@ namespace SB_Item_Creator
                 }
                
             }
+
                 String[] allfiles = System.IO.Directory.GetFiles(StarboundPath + "mods", "*.modinfo", System.IO.SearchOption.AllDirectories);
                 int i = 0;
                 foreach (string remove in allfiles)
@@ -420,7 +370,17 @@ namespace SB_Item_Creator
                 string path = AssetFolder;
                 String[] allfile = System.IO.Directory.GetFiles(path, "*.*", System.IO.SearchOption.AllDirectories);
                 String[] items2 = allfile.Select(x => x.Replace(path, string.Empty)).ToArray();
-                listBox1.DataSource = items2;
+                string[] exts = { ".wav", ".png", ".lua", ".animation", ".frames", ".config", ".ttf", 
+                                    ".augment", ".configfunctions", ".spacebiome", ".parallax", 
+                                    ".surfacebiome", ".undergroundparallax", ".undergroundbiome",
+                                 ".corebiome", ".cinematic", ".disabled", ".modularstem", ".ogg"};
+                ArrayList realitems = new ArrayList();
+                foreach(string item in items2){
+                if(!exts.Contains(Path.GetExtension(item))){
+                    realitems.Add(item);
+                }
+                }
+                listBox1.DataSource = realitems;
 
                 object[] objCollection = new object[listBox1.Items.Count];
                 listBox1.Items.CopyTo(objCollection, 0);
@@ -433,23 +393,14 @@ namespace SB_Item_Creator
 
                 
                 listBox2.DataSource = allfiles;
-            
-            Main = tabControl1.TabPages["Maintab"];
-            Armour = tabControl1.TabPages["ArmourTab"];
-            Melee = tabControl1.TabPages["Meleetab"];
-            Icon = tabControl1.TabPages["Iconmodeltab"];
-            Gun = tabControl1.TabPages["Guntab"];
-            Projectile = tabControl1.TabPages["Projectiletab"];
-            Recipe = tabControl1.TabPages["Recipetab"];
-            Description = tabControl1.TabPages["Descriptiontab"];
-            Code = tabControl1.TabPages["Rawcodetab"];
+        
 
             amourStatusKind.DataSource = StatusEffects;
             tabControl1.TabPages.Clear();
 
-            tabControl1.TabPages.Add(Main);
-            tabControl1.TabPages.Add(Code);
-            tabControl1.TabPages.Add(Recipe);
+            tabControl1.TabPages.Add(Maintab);
+            tabControl1.TabPages.Add(Rawcodetab);
+            tabControl1.TabPages.Add(Recipetab);
 
 
           
@@ -457,9 +408,10 @@ namespace SB_Item_Creator
 
         private void AddDefaultTabs() {
             tabControl1.TabPages.Clear();
-            tabControl1.TabPages.Add(Main);
-            tabControl1.TabPages.Add(Code);
-            tabControl1.TabPages.Add(Recipe);
+            tabControl1.TabPages.Add(Maintab);
+            tabControl1.TabPages.Add(Rawcodetab);
+            tabControl1.TabPages.Add(Recipetab);
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -481,10 +433,7 @@ namespace SB_Item_Creator
             }
         }
 
-        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -498,9 +447,7 @@ namespace SB_Item_Creator
         }
 
         private void button9_Click(object sender, EventArgs e)
-        {
-          
-          
+        {   
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 openFileDialog1.InitialDirectory = folderBrowserDialog1.SelectedPath;
@@ -528,16 +475,6 @@ namespace SB_Item_Creator
         private MetaData md;
         private ModInfo mi;
 
-        private void modauthortxtbox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private bool ModLoaded = false;
         private MetaData savemd = new MetaData();
         private ModInfo savemi = new ModInfo();
@@ -545,35 +482,30 @@ namespace SB_Item_Creator
         {
             if (ModLoaded == true)
             {
-
                 if (MessageBox.Show("Are you sure you want to save ModInfo?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
-
-
-
+                    //Do nothing
                 }
                 else
                 {
-
+                    //Save Modinfo
                     savemi.Name = modnametxtbox.Text;
                     savemi.Version = modversioncombobox.Text;
                     savemi.Path = modpathtxtbox.Text;
                     savemd.Name = modauthortxtbox.Text;
                     savemd.Description = moddesctxtbox.Text;
                     savemi.MD = savemd;
-
-
                     var json = JsonConvert.SerializeObject(savemi);
-
                     string path = folderBrowserDialog1.SelectedPath;
                     string[] files = System.IO.Directory.GetFiles(path, "*.modinfo");
-
                     System.IO.File.WriteAllText(@files[0], json);
                     Console.Out.WriteLine(json.ToString());
                     MessageBox.Show("Saved ModInfo");
                 }
             }
-            else { MessageBox.Show("No Mod loaded would you like to create one?"); }
+            else { 
+                MessageBox.Show("No Mod loaded would you like to create one?"); 
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -586,26 +518,12 @@ namespace SB_Item_Creator
             }
         }
 
-        private void groupBox18_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private ArrayList allfs = new ArrayList();
         private ArrayList nw = new ArrayList();
-        private void textBox6_TextChanged(object sender, KeyEventArgs e)
+
+       private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
         {
-         
-        }
-
-        private void textBox6_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
                 if (e.KeyChar == (char)Keys.Back)
                 {
                     String search = textBox6.Text;
@@ -636,7 +554,7 @@ namespace SB_Item_Creator
                 }   
         }
 
-        private void textBox6_KeyUp(object sender, KeyEventArgs e)
+       private void textBox6_KeyUp(object sender, KeyEventArgs e)
         {
             if (textBox6.Text == string.Empty)
             {
@@ -645,22 +563,20 @@ namespace SB_Item_Creator
             }
         }
 
-        private void groupBox22_Enter(object sender, EventArgs e)
-        {
 
-        }
 
        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-              
-                string moditemdata = File.ReadAllText(AssetFolder + listBox1.SelectedItem.ToString());
-                string itemextention = Path.GetExtension(AssetFolder + listBox1.SelectedItem.ToString());
+           string moditemdata = File.ReadAllText(AssetFolder + listBox1.SelectedItem.ToString());
+           string itemextention = Path.GetExtension(AssetFolder + listBox1.SelectedItem.ToString());
            string path =Path.GetDirectoryName(AssetFolder + listBox1.SelectedItem.ToString());
-           switch(itemextention){
-               case(".chest"):
+           switch (itemextention)
+           {
+               case (".chest"):
                    itemTypebox.Text = "Armour";
-                    AddDefaultTabs();
-                   tabControl1.TabPages.Add(Armour);
+                   AddDefaultTabs();
+                   tabControl1.TabPages.Add(ArmourTab);
+                   tabControl1.TabPages.Add(Descriptiontab);
                    ArmourChest chest = JsonConvert.DeserializeObject<ArmourChest>(moditemdata);
                    itemNametxtbox.Text = chest.Name;
                    maxstack.Value = chest.MaxStack;
@@ -670,28 +586,20 @@ namespace SB_Item_Creator
                    dropCol3.Text = chest.Collisions[2].ToString();
                    dropCol4.Text = chest.Collisions[3].ToString();
                    itemTypebox.Text = "Armour";
-
                    string[] file = chest.IconPath.Split(':');
                    invicopicbox.Image = Image.FromFile(path + "\\" + file[0]);
-
                    invicotxt.Text = file[0];
                    typetxt.Text = file[1];
                    maleframetxt.Text = chest.MFrames.Body;
-                   
-                  // d.Text = chest.MFrames.Body;
                    maleframetxt.Text = chest.MFrames.Body;
                    backmtxt.Text = chest.MFrames.BackS;
                    frontmtxt.Text = chest.MFrames.FrontS;
-
-
                    femaleframetxt.Text = chest.FFrames.Body;
                    frontftxt.Text = chest.FFrames.FrontS;
                    backftxt.Text = chest.FFrames.BackS;
-
                    maleframebox.Image = Image.FromFile(path + "\\" + chest.MFrames.Body);
                    backmpic.Image = Image.FromFile(path + "\\" + chest.MFrames.BackS);
                    frontmpic.Image = Image.FromFile(path + "\\" + chest.MFrames.FrontS);
-
                    femaleframebox.Image = Image.FromFile(path + "\\" + chest.FFrames.Body);
                    this.armourStatusEffects.Rows.Clear();
                    foreach (JObject se in chest.StatusEffectsString)
@@ -701,24 +609,20 @@ namespace SB_Item_Creator
                        int amount = (int)token.SelectToken("amount");
                        if (token.SelectToken("level") != null)
                        {
-
                            int level = (int)token.SelectToken("level");
                            this.armourStatusEffects.Rows.Add(kind, amount, level);
-                          
                        }
-                       else { 
-                          this.armourStatusEffects.Rows.Add(kind, amount);
+                       else
+                       {
+                           this.armourStatusEffects.Rows.Add(kind, amount);
                        }
-                       
-                    
-                     
                        System.Console.WriteLine(kind);
                    }
-                   
                    break;
-               case(".legs"):
+               case (".legs"):
                    AddDefaultTabs();
-                   tabControl1.TabPages.Add(Armour);
+                   tabControl1.TabPages.Add(ArmourTab);
+                   tabControl1.TabPages.Add(Descriptiontab);
                    ArmourLegs legs = JsonConvert.DeserializeObject<ArmourLegs>(moditemdata);
                    itemNametxtbox.Text = legs.Name;
                    maxstack.Value = legs.MaxStack;
@@ -728,10 +632,8 @@ namespace SB_Item_Creator
                    dropCol3.Text = legs.Collisions[2].ToString();
                    dropCol4.Text = legs.Collisions[3].ToString();
                    itemTypebox.Text = "Armour";
-                   
-                    string[] filez =  legs.IconPath.Split(':');
+                   string[] filez = legs.IconPath.Split(':');
                    invicopicbox.Image = Image.FromFile(path + "\\" + filez[0]);
-
                    invicotxt.Text = filez[0];
                    typetxt.Text = filez[1];
                    maleframetxt.Text = legs.MaleFrames;
@@ -739,31 +641,27 @@ namespace SB_Item_Creator
                    maleframebox.Image = Image.FromFile(path + "\\" + legs.MaleFrames);
                    femaleframebox.Image = Image.FromFile(path + "\\" + legs.FemaleFrames);
                    this.armourStatusEffects.Rows.Clear();
-                   foreach(JObject se in legs.StatusEffectsString){
+                   foreach (JObject se in legs.StatusEffectsString)
+                   {
                        JToken token = (JToken)se;
                        string kind = (string)token.SelectToken("kind");
                        int amount = (int)token.SelectToken("amount");
                        if (token.SelectToken("level") != null)
                        {
-
                            int level = (int)token.SelectToken("level");
                            this.armourStatusEffects.Rows.Add(kind, amount, level);
-                          
                        }
-                       else { 
-                          this.armourStatusEffects.Rows.Add(kind, amount);
+                       else
+                       {
+                           this.armourStatusEffects.Rows.Add(kind, amount);
                        }
-                       
-                    
-                     
                        System.Console.WriteLine(kind);
                    }
-                   
-                   
                    break;
-               case(".head"):
-                     AddDefaultTabs();
-                   tabControl1.TabPages.Add(Armour);
+               case (".head"):
+                   AddDefaultTabs();
+                   tabControl1.TabPages.Add(ArmourTab);
+                   tabControl1.TabPages.Add(Descriptiontab);
                    ArmourHead head = JsonConvert.DeserializeObject<ArmourHead>(moditemdata);
                    itemTypebox.Text = "Armour";
                    facemaskpic.Image = Image.FromFile(path + "\\" + head.Mask);
@@ -776,10 +674,8 @@ namespace SB_Item_Creator
                    dropCol3.Text = head.Collisions[2].ToString();
                    dropCol4.Text = head.Collisions[3].ToString();
                    itemTypebox.Text = "Armour";
-
                    string[] files = head.IconPath.Split(':');
                    invicopicbox.Image = Image.FromFile(path + "\\" + files[0]);
-
                    invicotxt.Text = files[0];
                    typetxt.Text = files[1];
                    maleframetxt.Text = head.MaleFrames;
@@ -794,44 +690,49 @@ namespace SB_Item_Creator
                        int amount = (int)token.SelectToken("amount");
                        if (token.SelectToken("level") != null)
                        {
-
                            int level = (int)token.SelectToken("level");
                            this.armourStatusEffects.Rows.Add(kind, amount, level);
-                          
                        }
-                       else { 
-                          this.armourStatusEffects.Rows.Add(kind, amount);
+                       else
+                       {
+                           this.armourStatusEffects.Rows.Add(kind, amount);
                        }
-                       
-                    
-                     
                        System.Console.WriteLine(kind);
                    }
                    break;
            }
-
-
-     
-        }
-
-        private void LoadArmour(object armour){
-        switch(armour.GetType().ToString()){
-            case("ArmourLegs"):
-                ArmourLegs legs = (ArmourLegs)armour;
-               
-                break;
-        }
         }
 
        private void listBox2_MouseDoubleClick(object sender, MouseEventArgs e)
        {
-             // MessageBox.Show(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
+
               string modinfopath = File.ReadAllText(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
               LoadedModPath = Path.GetDirectoryName(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
-              ModInfo data = JsonConvert.DeserializeObject<ModInfo>(modinfopath);
-              LoadModInfo(data);
+            
+           try
+              {
+                  ModInfo data = JsonConvert.DeserializeObject<ModInfo>(modinfopath);
+                  LoadModInfo(data);
+              }catch(Exception na){
+              try{
+                  ModInfoNoMeta data = JsonConvert.DeserializeObject<ModInfoNoMeta>(modinfopath);
+                  LoadModInfoNM(data);
+              }catch(Exception la){}
+              }
+              
        }
-       private string LoadedModPath;
+       public string LoadedModPath;
+
+       private void LoadModInfoNM(ModInfoNoMeta data) {
+           modauthortxtbox.Text = data.ModAuthor;
+           modnametxtbox.Text = data.ModName;
+           modpathtxtbox.Text = data.Path;
+           moddesctxtbox.Text = data.ModDescription;
+           modversioncombobox.Text = data.ModVersion;
+           modselectlbl.Text = data.ModName;
+           modselectlbl.ForeColor = Color.LimeGreen;
+       
+       }
 
        private void LoadModInfo(ModInfo data) {
            modauthortxtbox.Text = data.MD.Name;
@@ -841,45 +742,56 @@ namespace SB_Item_Creator
            moddependlist.DataSource = data.Dependencies;
            modversioncombobox.Text = data.Version;
            modselectlbl.Text = data.Name;
-          // System.Console.Write(LoadedModPath);
-
+           modselectlbl.ForeColor = Color.LimeGreen;
        }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void saveBtn_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void amourStatusAddBtn_Click(object sender, EventArgs e)
+       private void amourStatusAddBtn_Click(object sender, EventArgs e)
         {
            
             this.armourStatusEffects.Rows.Add(amourStatusKind.Text, amourStatusAmount.Text);
         }
 
-        private void tabControl1_VisibleChanged(object sender, EventArgs e)
-        {
+       private void ValidateJsonBTN_Click(object sender, EventArgs e)
+       {
+        
+       }
 
-        }
+       public string jsondata;
+       private void rawcode_TextChanged(object sender, EventArgs e)
+       {
+           try
+           {
+               var data = JsonConvert.DeserializeObject<JObject>(rawcode.Text);
+               validjsonlbl.Text = "Valid JSON Data!";
+               jsondata = rawcode.Text;
+               validjsonlbl.ForeColor = Color.LimeGreen;
+           }
+           catch (Exception exc)
+           {
+               validjsonlbl.Text = "Invalid JSON Data!";
+               validjsonlbl.ForeColor = Color.Red;
+           }
+       
+       }
 
-        private void Form1_VisibleChanged(object sender, EventArgs e)
-        {
-          //  ActiveForm.Icon = 
-        }
+       private void saveitembtn_Click(object sender, EventArgs e)
+       {
+           switch(itemTypebox.Text){
+               case "Armour":
+                   SaveArmour sa = new SaveArmour();
+                   sa.Show(this);
+                   break;
+           }
+       }
+
+        public string itemname;
+       private void itemNametxtbox_TextChanged(object sender, EventArgs e)
+       {
+           itemname = itemNametxtbox.Text;
+       }
+
+ 
+
 
     }
 }

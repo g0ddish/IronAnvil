@@ -80,7 +80,14 @@
     <Compile Include="gun.cs" />
     <Compile Include="MetaData.cs" />
     <Compile Include="ModInfo.cs" />
+    <Compile Include="ModInfoNoMeta.cs" />
     <Compile Include="recipe.cs" />
+    <Compile Include="SaveArmour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveArmour.Designer.cs">
+      <DependentUpon>SaveArmour.cs</DependentUpon>
+    </Compile>
     <Compile Include="StatusEffect.cs" />
     <Compile Include="Value.cs" />
     <Compile Include="Form1.cs">
@@ -112,6 +119,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SaveArmour.resx">
+      <DependentUpon>SaveArmour.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
