@@ -100,8 +100,14 @@ namespace SB_Item_Creator
             float[] coll = new float[4];
             int i = 1;
             ArrayList sees = new ArrayList();
+            ArrayList colors = new ArrayList();
+            JSONColor co1 = new JSONColor();
+            JSONColor co2 = new JSONColor();
+            colors.Add(co1);
+            colors.Add(co2);
             switch (itemTypebox.Text)
-            {
+            { 
+              
 
                 case ("Armour"):
                     switch (typetxt.Text)
@@ -120,17 +126,23 @@ namespace SB_Item_Creator
                             chest.Rarity = raritybox.Text;
                             chest.Description = maindesc.Text;
                             chest.InspectionKind = "armor";
-                            Frames male = new Frames();
-                            male.Body = maleframetxt.Text;
-                            male.BackS = backmtxt.Text;
-                            male.FrontS = frontmtxt.Text;
-                            Frames female = new Frames();
-                            female.Body = femaleframetxt.Text;
-                            female.BackS = backftxt.Text;
-                            female.FrontS = frontftxt.Text;
-                            chest.MFrames = male;
-                            chest.FFrames = female;
+                  
+                            Dictionary<string, string> data = new Dictionary<string, string>();
+                            Dictionary<string, string> data2 = new Dictionary<string, string>();
+                            data.Add("body", maleframetxt.Text);
+                            
+                            data.Add("backSleeve", backmtxt.Text);
+                            data.Add("frontSleeve", frontmtxt.Text);
+                            chest.MFrames = data;
 
+                            data2.Add("body", femaleframetxt.Text);
+                           data2.Add("backSleeve", backftxt.Text);
+                            data2.Add("frontSleeve", frontftxt.Text);
+                            chest.FFrames = data2;
+                         //   chest.FFrames = female;
+                          //  string [] bob = new string[] { "ffca8a", "838383", "e0975c", "555555", "a85636", "383838", "6f2919" , "151515" };
+                           
+                      //   chest.ColorOptions = colors;
                             foreach (DataGridViewRow se in armourStatusEffects.Rows)
                             {
                                 if (se.Cells[0].Value != null && se.Cells[1].Value != null)
@@ -140,7 +152,7 @@ namespace SB_Item_Creator
                                     see.Kind = se.Cells[0].Value.ToString();
                                     string str = se.Cells[i].Value.ToString();
                                     see.Amount = Convert.ToInt32(str);
-                                    System.Console.Write(str);
+                               //     System.Console.Write(str);
                                     try
                                     {
                                         sees.Add(see);
@@ -152,7 +164,7 @@ namespace SB_Item_Creator
                                 }
                                 chest.StatusEffectsString = sees;
                                 var json = JsonConvert.SerializeObject(chest, Formatting.Indented);
-                                Console.Write(json);
+                            //    Console.Write(json);
                                 rawcode.Text = json;
                             }
                             break;
@@ -173,7 +185,8 @@ namespace SB_Item_Creator
                             ahead.InspectionKind = "armor";
                             ahead.MaleFrames = maleframetxt.Text;
                             ahead.FemaleFrames = femaleframetxt.Text;
-
+                        
+                      //   ahead.ColorOptions = colors;
                             foreach (DataGridViewRow se in armourStatusEffects.Rows)
                             {
                                 if (se.Cells[0].Value != null && se.Cells[1].Value != null)
@@ -183,7 +196,7 @@ namespace SB_Item_Creator
                                     see.Kind = se.Cells[0].Value.ToString();
                                     string str = se.Cells[i].Value.ToString();
                                     see.Amount = Convert.ToInt32(str);
-                                    System.Console.Write(str);
+                                  //  System.Console.Write(str);
                                     try
                                     {
                                         sees.Add(see);
@@ -195,7 +208,7 @@ namespace SB_Item_Creator
                                 }
                                 ahead.StatusEffectsString = sees;
                                 var json = JsonConvert.SerializeObject(ahead, Formatting.Indented);
-                                Console.Write(json);
+                               // Console.Write(json);
                                 rawcode.Text = json;
                             }
                             break;
@@ -215,6 +228,8 @@ namespace SB_Item_Creator
                             ah.InspectionKind = "armor";
                             ah.MaleFrames = maleframetxt.Text;
                             ah.FemaleFrames = femaleframetxt.Text;
+                          
+                        // ah.ColorOptions = colors;
                             foreach (DataGridViewRow se in armourStatusEffects.Rows)
                             {
                                 if (se.Cells[0].Value != null && se.Cells[1].Value != null)
@@ -224,7 +239,7 @@ namespace SB_Item_Creator
                                     see.Kind = se.Cells[0].Value.ToString();
                                     string str = se.Cells[i].Value.ToString();
                                     see.Amount = Convert.ToInt32(str);
-                                    System.Console.Write(str);
+                                    //System.Console.Write(str);
                                     try
                                     {
                                         sees.Add(see);
@@ -236,7 +251,7 @@ namespace SB_Item_Creator
                                 }
                                 ah.StatusEffectsString = sees;
                                 var json = JsonConvert.SerializeObject(ah, Formatting.Indented);
-                                Console.Write(json);
+                               // Console.Write(json);
                                 rawcode.Text = json;
                             }
                             break;
@@ -273,6 +288,7 @@ namespace SB_Item_Creator
         private void rawclear_Click(object sender, EventArgs e)
         {
             rawcode.Clear();
+            ItemTypeLabel.Text = "";
         }
 
         private String[] StatusEffects = { "Absorption", "Bandage",
@@ -374,13 +390,13 @@ namespace SB_Item_Creator
                                     ".augment", ".configfunctions", ".spacebiome", ".parallax", 
                                     ".surfacebiome", ".undergroundparallax", ".undergroundbiome",
                                  ".corebiome", ".cinematic", ".disabled", ".modularstem", ".ogg"};
-                ArrayList realitems = new ArrayList();
                 foreach(string item in items2){
                 if(!exts.Contains(Path.GetExtension(item))){
-                    realitems.Add(item);
+                    allitems.Add(item);
                 }
                 }
-                listBox1.DataSource = realitems;
+                listBox1.DataSource = allitems;
+                inputlistbox.DataSource = allitems;
 
                 object[] objCollection = new object[listBox1.Items.Count];
                 listBox1.Items.CopyTo(objCollection, 0);
@@ -405,6 +421,7 @@ namespace SB_Item_Creator
 
           
         }
+        private bool EditingVanilla;
 
         private void AddDefaultTabs() {
             tabControl1.TabPages.Clear();
@@ -524,60 +541,17 @@ namespace SB_Item_Creator
 
        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
         {
-                if (e.KeyChar == (char)Keys.Back)
-                {
-                    String search = textBox6.Text;
-                    nw.Clear();
-                    foreach (string str in allfs)
-                    {
-                        bool contains = str.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0;
-                        if (contains)
-                        {
-                            nw.Add(str);
-                        }
-                    }
-                    listBox1.DataSource = null;
-                    listBox1.DataSource = nw;
-                }else
-                {
-                    String search = textBox6.Text;
-                    nw.Clear();
-                    foreach (string str in allfs)
-                    {
-                       bool contains = str.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0;
-                        if (contains){
-                            nw.Add(str);
-                        }
-                    }
-                    listBox1.DataSource = null;
-                    listBox1.DataSource = nw;
-                }   
+         
         }
 
        private void textBox6_KeyUp(object sender, KeyEventArgs e)
         {
-            if (textBox6.Text == string.Empty)
-            {
-                nw.Clear();
-                listBox1.DataSource = allfs;
-            }
+ 
         }
 
-
-
-       private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-           string moditemdata = File.ReadAllText(AssetFolder + listBox1.SelectedItem.ToString());
-           string itemextention = Path.GetExtension(AssetFolder + listBox1.SelectedItem.ToString());
-           string path =Path.GetDirectoryName(AssetFolder + listBox1.SelectedItem.ToString());
-           switch (itemextention)
-           {
-               case (".chest"):
-                   itemTypebox.Text = "Armour";
-                   AddDefaultTabs();
-                   tabControl1.TabPages.Add(ArmourTab);
-                   tabControl1.TabPages.Add(Descriptiontab);
-                   ArmourChest chest = JsonConvert.DeserializeObject<ArmourChest>(moditemdata);
+        private void LoadChest(ArmourChest chest, string p){
+                
+                   string path = Path.GetDirectoryName(p);
                    itemNametxtbox.Text = chest.Name;
                    maxstack.Value = chest.MaxStack;
                    raritybox.Text = chest.Rarity;
@@ -587,20 +561,37 @@ namespace SB_Item_Creator
                    dropCol4.Text = chest.Collisions[3].ToString();
                    itemTypebox.Text = "Armour";
                    string[] file = chest.IconPath.Split(':');
-                   invicopicbox.Image = Image.FromFile(path + "\\" + file[0]);
-                   invicotxt.Text = file[0];
-                   typetxt.Text = file[1];
-                   maleframetxt.Text = chest.MFrames.Body;
-                   maleframetxt.Text = chest.MFrames.Body;
-                   backmtxt.Text = chest.MFrames.BackS;
-                   frontmtxt.Text = chest.MFrames.FrontS;
-                   femaleframetxt.Text = chest.FFrames.Body;
-                   frontftxt.Text = chest.FFrames.FrontS;
-                   backftxt.Text = chest.FFrames.BackS;
-                   maleframebox.Image = Image.FromFile(path + "\\" + chest.MFrames.Body);
-                   backmpic.Image = Image.FromFile(path + "\\" + chest.MFrames.BackS);
-                   frontmpic.Image = Image.FromFile(path + "\\" + chest.MFrames.FrontS);
-                   femaleframebox.Image = Image.FromFile(path + "\\" + chest.FFrames.Body);
+                   try
+                   {
+                       invicotxt.Text = file[0];
+                       typetxt.Text = file[1];
+                   }
+                   catch (Exception nope) { }
+                   maleframetxt.Text = chest.MFrames["body"];
+                   backmtxt.Text = chest.MFrames["backSleeve"];
+                   frontmtxt.Text = chest.MFrames["frontSleeve"];
+
+                   femaleframetxt.Text = chest.FFrames["body"];
+                   frontftxt.Text = chest.FFrames["backSleeve"];
+                   backftxt.Text = chest.FFrames["frontSleeve"];
+
+              
+
+                   try
+                   {
+                       invicopicbox.Image = Image.FromFile(path + "\\" + file[0]);
+
+                       maleframebox.Image = Image.FromFile(path + "\\" + chest.MFrames["body"]);
+                       backmpic.Image = Image.FromFile(path + "\\" + chest.MFrames["backSleeve"]);
+                       frontmpic.Image = Image.FromFile(path + "\\" + chest.MFrames["frontSleeve"]);
+
+                       femaleframebox.Image = Image.FromFile(path + "\\" + chest.FFrames["body"]);
+                       backfpic.Image = Image.FromFile(path + "\\" + chest.FFrames["backSleeve"]);
+                       frontfpic.Image = Image.FromFile(path + "\\" + chest.FFrames["frontSleeve"]);
+
+                      // femaleframebox.Image = Image.FromFile(path + "\\" + chest.FFrames["body"]);
+
+                   }catch(Exception lolwa){}
                    this.armourStatusEffects.Rows.Clear();
                    foreach (JObject se in chest.StatusEffectsString)
                    {
@@ -616,98 +607,194 @@ namespace SB_Item_Creator
                        {
                            this.armourStatusEffects.Rows.Add(kind, amount);
                        }
-                       System.Console.WriteLine(kind);
-                   }
+        }
+                   Update();
+                   ValidateJSON();
+                   MessageBox.Show("Chest Loaded");
+        }
+        private void LoadLegs(ArmourLegs legs, string itempath) {
+            string path = Path.GetDirectoryName(AssetFolder + listBox1.SelectedItem.ToString());
+            
+            itemNametxtbox.Text = legs.Name;
+            maxstack.Value = legs.MaxStack;
+            raritybox.Text = legs.Rarity;
+            dropCol1.Text = legs.Collisions[0].ToString();
+            dropCol2.Text = legs.Collisions[1].ToString();
+            dropCol3.Text = legs.Collisions[2].ToString();
+            dropCol4.Text = legs.Collisions[3].ToString();
+            itemTypebox.Text = "Armour";
+            string[] filez = legs.IconPath.Split(':');
+            try
+            {
+                invicotxt.Text = filez[0];
+                typetxt.Text = filez[1];
+            }
+            catch (Exception lel) { }
+            maleframetxt.Text = legs.MaleFrames;
+            femaleframetxt.Text = legs.FemaleFrames;
+            
+            this.armourStatusEffects.Rows.Clear();
+            foreach (JObject se in legs.StatusEffectsString)
+            {
+                JToken token = (JToken)se;
+                string kind = (string)token.SelectToken("kind");
+                int amount = (int)token.SelectToken("amount");
+                if (token.SelectToken("level") != null)
+                {
+                    int level = (int)token.SelectToken("level");
+                    this.armourStatusEffects.Rows.Add(kind, amount, level);
+                }
+                else
+                {
+                    this.armourStatusEffects.Rows.Add(kind, amount);
+                }
+                System.Console.WriteLine(kind);
+            }
+            try
+            {
+                invicopicbox.Image = Image.FromFile(path + "\\" + filez[0]);
+                maleframebox.Image = Image.FromFile(path + "\\" + legs.MaleFrames);
+                femaleframebox.Image = Image.FromFile(path + "\\" + legs.FemaleFrames);
+            }
+            catch (Exception lolimg) { }
+            Update();
+            ValidateJSON();
+            MessageBox.Show("Legs Loaded");
+        }
+
+        private void LoadHead(ArmourHead head, string p) {
+            string path = Path.GetDirectoryName(p);
+
+            itemTypebox.Text = "Armour";
+            try
+            {
+                facemaskpic.Image = Image.FromFile(path + "\\" + head.Mask);
+            }catch(Exception fuck){}
+            masktxtbox.Text = head.Mask;
+            itemNametxtbox.Text = head.Name;
+            maxstack.Value = head.MaxStack;
+            raritybox.Text = head.Rarity;
+            dropCol1.Text = head.Collisions[0].ToString();
+            dropCol2.Text = head.Collisions[1].ToString();
+            dropCol3.Text = head.Collisions[2].ToString();
+            dropCol4.Text = head.Collisions[3].ToString();
+            itemTypebox.Text = "Armour";
+            string[] files = head.IconPath.Split(':');
+            try
+            {
+                invicopicbox.Image = Image.FromFile(path + "\\" + files[0]); 
+                invicotxt.Text = files[0];
+                 typetxt.Text = files[1];   
+                maleframebox.Image = Image.FromFile(path + "\\" + head.MaleFrames);
+            femaleframebox.Image = Image.FromFile(path + "\\" + head.FemaleFrames);
+            }
+            catch (Exception fuck2) { }
+          
+            maleframetxt.Text = head.MaleFrames;
+            femaleframetxt.Text = head.FemaleFrames;
+        
+            this.armourStatusEffects.Rows.Clear();
+            foreach (JObject se in head.StatusEffectsString)
+            {
+                JToken token = (JToken)se;
+                string kind = (string)token.SelectToken("kind");
+                int amount = (int)token.SelectToken("amount");
+                if (token.SelectToken("level") != null)
+                {
+                    int level = (int)token.SelectToken("level");
+                    this.armourStatusEffects.Rows.Add(kind, amount, level);
+                }
+                else
+                {
+                    this.armourStatusEffects.Rows.Add(kind, amount);
+                }
+                
+            }
+            Update();
+            ValidateJSON();
+            MessageBox.Show("Head Loaded");
+        }
+
+       private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        { 
+           string itemextention;
+            string moditemdata;
+          string dir;
+            if (File.Exists(StarboundPath + "\\mods" + listBox1.SelectedItem.ToString()))
+            {
+                itemextention = Path.GetExtension(StarboundPath + "\\mods" + listBox1.SelectedItem.ToString());
+            moditemdata    = File.ReadAllText(StarboundPath + "\\mods" + listBox1.SelectedItem.ToString());
+            dir = StarboundPath + "\\mods" + listBox1.SelectedItem.ToString();
+
+            }
+            else {
+                 itemextention = Path.GetExtension(AssetFolder + listBox1.SelectedItem.ToString());
+                 dir = AssetFolder + listBox1.SelectedItem.ToString();
+                 moditemdata = File.ReadAllText(AssetFolder + listBox1.SelectedItem.ToString());
+            }
+       
+
+           switch (itemextention)
+           {
+               case (".chest"):
+                   itemTypebox.Text = "Armour";
+                   AddDefaultTabs();
+                   tabControl1.TabPages.Add(ArmourTab);
+                   tabControl1.TabPages.Add(Descriptiontab);
+                   ArmourChest chest = JsonConvert.DeserializeObject<ArmourChest>(moditemdata);
+                   LoadChest(chest, dir);
+              
                    break;
                case (".legs"):
                    AddDefaultTabs();
                    tabControl1.TabPages.Add(ArmourTab);
                    tabControl1.TabPages.Add(Descriptiontab);
                    ArmourLegs legs = JsonConvert.DeserializeObject<ArmourLegs>(moditemdata);
-                   itemNametxtbox.Text = legs.Name;
-                   maxstack.Value = legs.MaxStack;
-                   raritybox.Text = legs.Rarity;
-                   dropCol1.Text = legs.Collisions[0].ToString();
-                   dropCol2.Text = legs.Collisions[1].ToString();
-                   dropCol3.Text = legs.Collisions[2].ToString();
-                   dropCol4.Text = legs.Collisions[3].ToString();
-                   itemTypebox.Text = "Armour";
-                   string[] filez = legs.IconPath.Split(':');
-                   invicopicbox.Image = Image.FromFile(path + "\\" + filez[0]);
-                   invicotxt.Text = filez[0];
-                   typetxt.Text = filez[1];
-                   maleframetxt.Text = legs.MaleFrames;
-                   femaleframetxt.Text = legs.FemaleFrames;
-                   maleframebox.Image = Image.FromFile(path + "\\" + legs.MaleFrames);
-                   femaleframebox.Image = Image.FromFile(path + "\\" + legs.FemaleFrames);
-                   this.armourStatusEffects.Rows.Clear();
-                   foreach (JObject se in legs.StatusEffectsString)
-                   {
-                       JToken token = (JToken)se;
-                       string kind = (string)token.SelectToken("kind");
-                       int amount = (int)token.SelectToken("amount");
-                       if (token.SelectToken("level") != null)
-                       {
-                           int level = (int)token.SelectToken("level");
-                           this.armourStatusEffects.Rows.Add(kind, amount, level);
-                       }
-                       else
-                       {
-                           this.armourStatusEffects.Rows.Add(kind, amount);
-                       }
-                       System.Console.WriteLine(kind);
-                   }
+                   LoadLegs(legs, dir);
+                   Update();
                    break;
                case (".head"):
                    AddDefaultTabs();
                    tabControl1.TabPages.Add(ArmourTab);
                    tabControl1.TabPages.Add(Descriptiontab);
                    ArmourHead head = JsonConvert.DeserializeObject<ArmourHead>(moditemdata);
-                   itemTypebox.Text = "Armour";
-                   facemaskpic.Image = Image.FromFile(path + "\\" + head.Mask);
-                   masktxtbox.Text = head.Mask;
-                   itemNametxtbox.Text = head.Name;
-                   maxstack.Value = head.MaxStack;
-                   raritybox.Text = head.Rarity;
-                   dropCol1.Text = head.Collisions[0].ToString();
-                   dropCol2.Text = head.Collisions[1].ToString();
-                   dropCol3.Text = head.Collisions[2].ToString();
-                   dropCol4.Text = head.Collisions[3].ToString();
-                   itemTypebox.Text = "Armour";
-                   string[] files = head.IconPath.Split(':');
-                   invicopicbox.Image = Image.FromFile(path + "\\" + files[0]);
-                   invicotxt.Text = files[0];
-                   typetxt.Text = files[1];
-                   maleframetxt.Text = head.MaleFrames;
-                   femaleframetxt.Text = head.FemaleFrames;
-                   maleframebox.Image = Image.FromFile(path + "\\" + head.MaleFrames);
-                   femaleframebox.Image = Image.FromFile(path + "\\" + head.FemaleFrames);
-                   this.armourStatusEffects.Rows.Clear();
-                   foreach (JObject se in head.StatusEffectsString)
-                   {
-                       JToken token = (JToken)se;
-                       string kind = (string)token.SelectToken("kind");
-                       int amount = (int)token.SelectToken("amount");
-                       if (token.SelectToken("level") != null)
-                       {
-                           int level = (int)token.SelectToken("level");
-                           this.armourStatusEffects.Rows.Add(kind, amount, level);
-                       }
-                       else
-                       {
-                           this.armourStatusEffects.Rows.Add(kind, amount);
-                       }
-                       System.Console.WriteLine(kind);
-                   }
+                   LoadHead(head, dir);
+                   Update();
                    break;
            }
         }
+       private ArrayList allitems = new ArrayList();
+       private ArrayList moditems = new ArrayList();
 
        private void listBox2_MouseDoubleClick(object sender, MouseEventArgs e)
        {
+           string ModFolder = Path.GetDirectoryName(listBox2.SelectedItem.ToString());
+           string modinfopath = File.ReadAllText(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
+           LoadedModPath = Path.GetDirectoryName(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
 
-              string modinfopath = File.ReadAllText(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
-              LoadedModPath = Path.GetDirectoryName(StarboundPath + "mods\\" + listBox2.SelectedItem.ToString());
+           String[] allfile = System.IO.Directory.GetFiles(LoadedModPath, "*.*", System.IO.SearchOption.AllDirectories);
+      //     String[] items2 = allfile.Select(x => x.Replace(LoadedModPath, string.Empty)).ToArray();
+           string[] exts = { ".wav", ".png", ".lua", ".animation", ".frames", ".config", ".ttf", 
+                                    ".augment", ".configfunctions", ".spacebiome", ".parallax", 
+                                    ".surfacebiome", ".undergroundparallax", ".undergroundbiome",
+                                 ".corebiome", ".cinematic", ".disabled", ".modularstem", ".ogg"};
+           ArrayList realitems = new ArrayList();
+      
+           foreach (string item in allfile)
+           {
+               if (!exts.Contains(Path.GetExtension(item)))
+               {
+                  
+                   string s = "\\" + item.Substring(item.LastIndexOf(ModFolder));
+                   realitems.Add(s);
+               }
+           }
+           MessageBox.Show("Mod Loaded");
+           moditems = realitems; //here
+           modradio.Checked = true;
+           listBox1.DataSource = moditems;
+
+        
             
            try
               {
@@ -757,22 +844,80 @@ namespace SB_Item_Creator
        }
 
        public string jsondata;
-       private void rawcode_TextChanged(object sender, EventArgs e)
+       private void ValidateJSON()
        {
+           validjsonlbl.Text = "";
            try
            {
-               var data = JsonConvert.DeserializeObject<JObject>(rawcode.Text);
+               JObject data = JsonConvert.DeserializeObject<JObject>(rawcode.Text);
                validjsonlbl.Text = "Valid JSON Data!";
                jsondata = rawcode.Text;
                validjsonlbl.ForeColor = Color.LimeGreen;
            }
            catch (Exception exc)
            {
+               Console.Write(exc.ToString());
                validjsonlbl.Text = "Invalid JSON Data!";
                validjsonlbl.ForeColor = Color.Red;
            }
-       
+
+           try
+           {
+               ArmourHead headtest = JsonConvert.DeserializeObject<ArmourHead>(rawcode.Text);
+               if (headtest.Mask == null) { throw new System.ArgumentException("Parameter cannot be null", "original"); }
+               ItemTypeLabel.Text = "Head";
+             //  LoadHead(headtest, "");
+               ItemTypeLabel.ForeColor = Color.Crimson;
+               itemisalbl.Enabled = true;
+               return;
+           }
+           catch (Exception x)
+           {//Not a head
+            //   Console.Clear();
+               Console.WriteLine(x.ToString());
+              Console.Write("Not a head");
+           }
+           try
+           {
+               ArmourChest chesttest = JsonConvert.DeserializeObject<ArmourChest>(rawcode.Text);
+             //  LoadChest(chesttest, "");
+               ItemTypeLabel.Text = "Chest";
+               ItemTypeLabel.ForeColor = Color.Chocolate;
+               itemisalbl.Enabled = true;
+               return;
+
+           }
+           catch (Exception l)
+           {
+               Console.Write("Not a chest");
+
+           }
+           try
+           {
+               ArmourLegs legtest = JsonConvert.DeserializeObject<ArmourLegs>(rawcode.Text);
+              // LoadLegs(legtest, "");
+            
+
+               ItemTypeLabel.Text = "Legs";
+               ItemTypeLabel.ForeColor = Color.Crimson;
+               itemisalbl.Enabled = true;
+               return;
+           }
+           catch (Exception lol) {
+               Console.Write("Not legs");
+               Console.WriteLine(lol.ToString());
+           }
        }
+       private void rawcode_TextChanged(object sender, EventArgs e)
+       {
+           ValidateJSON();
+
+               }
+           
+          
+       
+       
+
 
        private void saveitembtn_Click(object sender, EventArgs e)
        {
@@ -788,6 +933,97 @@ namespace SB_Item_Creator
        private void itemNametxtbox_TextChanged(object sender, EventArgs e)
        {
            itemname = itemNametxtbox.Text;
+       }
+
+       private void textBox6_TextChanged(object sender, EventArgs e)
+       {
+           ArrayList all = new ArrayList();
+           if (modradio.Checked == true)
+           {
+               all = moditems;
+           }
+           else
+           {
+               all = allitems;
+           }
+
+           String search = textBox6.Text;
+           nw.Clear();
+           foreach (string str in all)
+           {
+               bool contains = str.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0;
+               if (contains)
+               {
+                   nw.Add(str);
+               }
+           }
+           listBox1.DataSource = null;
+           listBox1.DataSource = nw;
+       }
+
+       private void button1_Click(object sender, EventArgs e)
+       {
+
+       }
+
+       private void unpackradio_CheckedChanged(object sender, EventArgs e)
+       {
+
+       }
+
+       private void modradio_CheckedChanged(object sender, EventArgs e)
+       {
+           if(modradio.Checked == true){
+               listBox1.DataSource = moditems;
+           }else if(unpackradio.Checked == true){
+               listBox1.DataSource = allitems;
+           }
+       }
+
+       private void modradio2_CheckedChanged(object sender, EventArgs e)
+       {
+           if (modradio2.Checked == true)
+           {
+               inputlistbox.DataSource = moditems;
+           }
+           else if (unpackedradio2.Checked == true)
+           {
+               inputlistbox.DataSource = allitems;
+           }
+       }
+
+       private void textBox1_TextChanged(object sender, EventArgs e)
+       {
+           ArrayList all = new ArrayList();
+           if (modradio2.Checked == true)
+           {
+               all = moditems;
+           }
+           else
+           {
+               all = allitems;
+           }
+   
+               String search = textBox1.Text;
+               nw.Clear();
+               foreach (string str in all)
+               {
+                   bool contains = str.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0;
+                   if (contains)
+                   {
+                       nw.Add(str);
+                   }
+               }
+
+               inputlistbox.DataSource = null;
+               inputlistbox.DataSource = nw;
+      
+          
+       }
+
+       private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+       {
+        
        }
 
  

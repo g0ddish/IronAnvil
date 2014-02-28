@@ -49,6 +49,8 @@ namespace SB_Item_Creator
             this.label21 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.Rawcodetab = new System.Windows.Forms.TabPage();
+            this.itemisalbl = new System.Windows.Forms.Label();
+            this.ItemTypeLabel = new System.Windows.Forms.Label();
             this.validjsonlbl = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.rawrecipe = new System.Windows.Forms.RichTextBox();
@@ -74,7 +76,22 @@ namespace SB_Item_Creator
             this.Recipetab = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ouputName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outputCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.modradio2 = new System.Windows.Forms.RadioButton();
+            this.unpackedradio2 = new System.Windows.Forms.RadioButton();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button15 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inputlistbox = new System.Windows.Forms.ListBox();
             this.Projectiletab = new System.Windows.Forms.TabPage();
             this.Guntab = new System.Windows.Forms.TabPage();
@@ -136,8 +153,8 @@ namespace SB_Item_Creator
             this.Maintab = new System.Windows.Forms.TabPage();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.modradio = new System.Windows.Forms.RadioButton();
+            this.unpackradio = new System.Windows.Forms.RadioButton();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -196,7 +213,10 @@ namespace SB_Item_Creator
             this.groupBox12.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.Recipetab.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Iconmodeltab.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -816,6 +836,8 @@ namespace SB_Item_Creator
             // 
             // Rawcodetab
             // 
+            this.Rawcodetab.Controls.Add(this.itemisalbl);
+            this.Rawcodetab.Controls.Add(this.ItemTypeLabel);
             this.Rawcodetab.Controls.Add(this.validjsonlbl);
             this.Rawcodetab.Controls.Add(this.label8);
             this.Rawcodetab.Controls.Add(this.rawrecipe);
@@ -829,6 +851,25 @@ namespace SB_Item_Creator
             this.Rawcodetab.TabIndex = 8;
             this.Rawcodetab.Text = "Raw Code";
             this.Rawcodetab.UseVisualStyleBackColor = true;
+            // 
+            // itemisalbl
+            // 
+            this.itemisalbl.AutoSize = true;
+            this.itemisalbl.Enabled = false;
+            this.itemisalbl.Location = new System.Drawing.Point(497, 65);
+            this.itemisalbl.Name = "itemisalbl";
+            this.itemisalbl.Size = new System.Drawing.Size(71, 13);
+            this.itemisalbl.TabIndex = 9;
+            this.itemisalbl.Text = "This item is a ";
+            // 
+            // ItemTypeLabel
+            // 
+            this.ItemTypeLabel.AutoSize = true;
+            this.ItemTypeLabel.Location = new System.Drawing.Point(565, 65);
+            this.ItemTypeLabel.Name = "ItemTypeLabel";
+            this.ItemTypeLabel.Size = new System.Drawing.Size(41, 13);
+            this.ItemTypeLabel.TabIndex = 8;
+            this.ItemTypeLabel.Text = "label25";
             // 
             // validjsonlbl
             // 
@@ -1048,38 +1089,176 @@ namespace SB_Item_Creator
             // 
             // groupBox7
             // 
-            this.groupBox7.Location = new System.Drawing.Point(17, 135);
+            this.groupBox7.Location = new System.Drawing.Point(313, 526);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(381, 78);
-            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Device and Grouping";
             // 
             // groupBox6
             // 
-            this.groupBox6.Location = new System.Drawing.Point(17, 219);
+            this.groupBox6.Controls.Add(this.textBox2);
+            this.groupBox6.Controls.Add(this.button1);
+            this.groupBox6.Controls.Add(this.label26);
+            this.groupBox6.Controls.Add(this.dataGridView2);
+            this.groupBox6.Controls.Add(this.listBox3);
+            this.groupBox6.Location = new System.Drawing.Point(499, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(403, 91);
+            this.groupBox6.Size = new System.Drawing.Size(461, 488);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Output";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(53, 13);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(323, 266);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Remove";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 16);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(29, 13);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "Filter";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ouputName,
+            this.outputCount});
+            this.dataGridView2.Location = new System.Drawing.Point(6, 263);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(311, 216);
+            this.dataGridView2.TabIndex = 2;
+            // 
+            // ouputName
+            // 
+            this.ouputName.HeaderText = "Name";
+            this.ouputName.Name = "ouputName";
+            // 
+            // outputCount
+            // 
+            this.outputCount.HeaderText = "Count";
+            this.outputCount.Name = "outputCount";
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(6, 48);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(449, 212);
+            this.listBox3.TabIndex = 2;
+            // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.modradio2);
+            this.groupBox5.Controls.Add(this.unpackedradio2);
+            this.groupBox5.Controls.Add(this.label25);
+            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.button15);
+            this.groupBox5.Controls.Add(this.dataGridView1);
             this.groupBox5.Controls.Add(this.inputlistbox);
-            this.groupBox5.Location = new System.Drawing.Point(17, 16);
+            this.groupBox5.Location = new System.Drawing.Point(17, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(391, 113);
+            this.groupBox5.Size = new System.Drawing.Size(476, 488);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Input";
             // 
+            // modradio2
+            // 
+            this.modradio2.AutoSize = true;
+            this.modradio2.Location = new System.Drawing.Point(367, 14);
+            this.modradio2.Name = "modradio2";
+            this.modradio2.Size = new System.Drawing.Size(46, 17);
+            this.modradio2.TabIndex = 7;
+            this.modradio2.Text = "Mod";
+            this.modradio2.UseVisualStyleBackColor = true;
+            this.modradio2.CheckedChanged += new System.EventHandler(this.modradio2_CheckedChanged);
+            // 
+            // unpackedradio2
+            // 
+            this.unpackedradio2.AutoSize = true;
+            this.unpackedradio2.Checked = true;
+            this.unpackedradio2.Location = new System.Drawing.Point(286, 14);
+            this.unpackedradio2.Name = "unpackedradio2";
+            this.unpackedradio2.Size = new System.Drawing.Size(75, 17);
+            this.unpackedradio2.TabIndex = 6;
+            this.unpackedradio2.TabStop = true;
+            this.unpackedradio2.Text = "Unpacked";
+            this.unpackedradio2.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 16);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(29, 13);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "Filter";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(53, 13);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(158, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(338, 266);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.TabIndex = 3;
+            this.button15.Text = "Remove";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name,
+            this.Count});
+            this.dataGridView1.Location = new System.Drawing.Point(6, 266);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(326, 213);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            // 
+            // Count
+            // 
+            this.Count.HeaderText = "Count";
+            this.Count.Name = "Count";
+            // 
             // inputlistbox
             // 
             this.inputlistbox.FormattingEnabled = true;
-            this.inputlistbox.Location = new System.Drawing.Point(29, 12);
+            this.inputlistbox.Location = new System.Drawing.Point(6, 48);
             this.inputlistbox.Name = "inputlistbox";
-            this.inputlistbox.Size = new System.Drawing.Size(120, 95);
+            this.inputlistbox.Size = new System.Drawing.Size(464, 212);
             this.inputlistbox.TabIndex = 0;
             // 
             // Projectiletab
@@ -1647,8 +1826,8 @@ namespace SB_Item_Creator
             // 
             // groupBox21
             // 
-            this.groupBox21.Controls.Add(this.radioButton2);
-            this.groupBox21.Controls.Add(this.radioButton1);
+            this.groupBox21.Controls.Add(this.modradio);
+            this.groupBox21.Controls.Add(this.unpackradio);
             this.groupBox21.Controls.Add(this.textBox6);
             this.groupBox21.Controls.Add(this.label23);
             this.groupBox21.Location = new System.Drawing.Point(10, 8);
@@ -1658,27 +1837,29 @@ namespace SB_Item_Creator
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Filter";
             // 
-            // radioButton2
+            // modradio
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(285, 31);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(46, 17);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Mod";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.modradio.AutoSize = true;
+            this.modradio.Location = new System.Drawing.Point(285, 31);
+            this.modradio.Name = "modradio";
+            this.modradio.Size = new System.Drawing.Size(46, 17);
+            this.modradio.TabIndex = 4;
+            this.modradio.Text = "Mod";
+            this.modradio.UseVisualStyleBackColor = true;
+            this.modradio.CheckedChanged += new System.EventHandler(this.modradio_CheckedChanged);
             // 
-            // radioButton1
+            // unpackradio
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(204, 31);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(75, 17);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Unpacked";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.unpackradio.AutoSize = true;
+            this.unpackradio.Checked = true;
+            this.unpackradio.Location = new System.Drawing.Point(204, 31);
+            this.unpackradio.Name = "unpackradio";
+            this.unpackradio.Size = new System.Drawing.Size(75, 17);
+            this.unpackradio.TabIndex = 3;
+            this.unpackradio.TabStop = true;
+            this.unpackradio.Text = "Unpacked";
+            this.unpackradio.UseVisualStyleBackColor = true;
+            this.unpackradio.CheckedChanged += new System.EventHandler(this.unpackradio_CheckedChanged);
             // 
             // textBox6
             // 
@@ -1686,6 +1867,7 @@ namespace SB_Item_Creator
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(139, 20);
             this.textBox6.TabIndex = 2;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             this.textBox6.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox6_KeyUp);
             // 
@@ -1801,6 +1983,8 @@ namespace SB_Item_Creator
             // modversioncombobox
             // 
             this.modversioncombobox.FormattingEnabled = true;
+            this.modversioncombobox.Items.AddRange(new object[] {
+            "Beta v. Enraged Koala"});
             this.modversioncombobox.Location = new System.Drawing.Point(56, 43);
             this.modversioncombobox.Name = "modversioncombobox";
             this.modversioncombobox.Size = new System.Drawing.Size(179, 21);
@@ -2256,7 +2440,7 @@ namespace SB_Item_Creator
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+          //  this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Iron Anvil";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -2273,7 +2457,12 @@ namespace SB_Item_Creator
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.Recipetab.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Iconmodeltab.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
@@ -2361,7 +2550,6 @@ namespace SB_Item_Creator
         private System.Windows.Forms.TextBox apexdesc;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TabPage Recipetab;
-        private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TabPage Projectiletab;
@@ -2424,8 +2612,8 @@ namespace SB_Item_Creator
         private System.Windows.Forms.TabPage Maintab;
         private System.Windows.Forms.GroupBox groupBox22;
         private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton modradio;
+        private System.Windows.Forms.RadioButton unpackradio;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ListBox listBox1;
@@ -2478,6 +2666,24 @@ namespace SB_Item_Creator
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Label validjsonlbl;
         private System.Windows.Forms.ListBox inputlistbox;
+        private System.Windows.Forms.Label ItemTypeLabel;
+        private System.Windows.Forms.Label itemisalbl;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ouputName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outputCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton modradio2;
+        private System.Windows.Forms.RadioButton unpackedradio2;
     }
 }
 

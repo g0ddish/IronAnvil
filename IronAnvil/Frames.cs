@@ -8,11 +8,11 @@ namespace SB_Item_Creator
 {
     class Frames
     {
-        [JsonProperty("body")]
+        [JsonProperty("body", Required = Required.Always)]
         public string Body { get; set; }
-        [JsonProperty("backSleeve")]
+        [JsonProperty("backSleeve", Required = Required.Always)]
         public string BackS { get; set; }
-        [JsonProperty("frontSleeve")]
+        [JsonProperty("frontSleeve", Required = Required.Always)]
         public string FrontS { get; set; }
     }
 }

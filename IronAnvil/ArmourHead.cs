@@ -8,7 +8,7 @@ namespace SB_Item_Creator
 {
     class ArmourHead : ArmourLegs
     {
-        [JsonProperty("mask")]
+        [JsonProperty("mask", Required = Required.Always)]
         public string Mask { get; set; }
     }
 }

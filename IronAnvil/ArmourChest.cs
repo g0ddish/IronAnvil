@@ -8,10 +8,12 @@ namespace SB_Item_Creator
 {
     class ArmourChest : Armour
     {
-        [JsonProperty("maleFrames")]
-        public Frames MFrames { get; set; }
-        [JsonProperty("femaleFrames")]
-        public Frames FFrames { get; set; }
+        [JsonProperty("maleFrames", Required = Required.Always,
+           NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, string> MFrames { get; set; }
+        [JsonProperty("femaleFrames", Required = Required.Always,
+            NullValueHandling = NullValueHandling.Ignore)]
+        public Dictionary<string, string> FFrames { get; set; }
 
     }
 }
