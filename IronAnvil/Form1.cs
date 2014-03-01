@@ -114,7 +114,7 @@ namespace SB_Item_Creator
                     {
                         case "chest":
                             ArmourChest chest = new ArmourChest();
-                            chest.RefrenceName = System.Text.RegularExpressions.Regex.Replace(itemNametxtbox.Text, @"[^a-zA-Z0-9]", "").ToLowerInvariant();
+                            chest.RefrenceName = VanillaItemName;
                             chest.Name = itemNametxtbox.Text;
                             chest.IconPath = invicotxt.Text;
                             coll[0] = float.Parse(dropCol1.Text);
@@ -170,7 +170,7 @@ namespace SB_Item_Creator
                             break;
                         case "head":
                             ArmourHead ahead = new ArmourHead();
-                            ahead.RefrenceName = System.Text.RegularExpressions.Regex.Replace(itemNametxtbox.Text, @"[^a-zA-Z0-9]", "").ToLowerInvariant();
+                            ahead.RefrenceName = VanillaItemName;
                             ahead.Name = itemNametxtbox.Text;
                             ahead.IconPath = invicotxt.Text;
                             ahead.Mask = masktxtbox.Text;
@@ -214,7 +214,7 @@ namespace SB_Item_Creator
                             break;
                         case "pants":
                             ArmourLegs ah = new ArmourLegs();
-                            ah.RefrenceName = System.Text.RegularExpressions.Regex.Replace(itemNametxtbox.Text, @"[^a-zA-Z0-9]", "").ToLowerInvariant();
+                            ah.RefrenceName = VanillaItemName;
                             ah.Name = itemNametxtbox.Text;
                             ah.IconPath = invicotxt.Text;
                             coll[0] = float.Parse(dropCol1.Text);
@@ -421,7 +421,7 @@ namespace SB_Item_Creator
 
           
         }
-        private bool EditingVanilla;
+        public bool EditingVanilla;
 
         private void AddDefaultTabs() {
             tabControl1.TabPages.Clear();
@@ -714,7 +714,8 @@ namespace SB_Item_Creator
             ValidateJSON();
             MessageBox.Show("Head Loaded");
         }
-
+        public string VanillaItemName;
+        public string VanillaItemPath;
        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         { 
            string itemextention;
@@ -732,8 +733,9 @@ namespace SB_Item_Creator
                  dir = AssetFolder + listBox1.SelectedItem.ToString();
                  moditemdata = File.ReadAllText(AssetFolder + listBox1.SelectedItem.ToString());
             }
-       
 
+            VanillaItemPath = listBox1.SelectedItem.ToString();
+            MessageBox.Show(VanillaItemPath);
            switch (itemextention)
            {
                case (".chest"):
@@ -742,14 +744,16 @@ namespace SB_Item_Creator
                    tabControl1.TabPages.Add(ArmourTab);
                    tabControl1.TabPages.Add(Descriptiontab);
                    ArmourChest chest = JsonConvert.DeserializeObject<ArmourChest>(moditemdata);
+                   VanillaItemName = chest.RefrenceName;
                    LoadChest(chest, dir);
-              
+                   Update();
                    break;
                case (".legs"):
                    AddDefaultTabs();
                    tabControl1.TabPages.Add(ArmourTab);
                    tabControl1.TabPages.Add(Descriptiontab);
                    ArmourLegs legs = JsonConvert.DeserializeObject<ArmourLegs>(moditemdata);
+                   VanillaItemName = legs.RefrenceName;
                    LoadLegs(legs, dir);
                    Update();
                    break;
@@ -758,6 +762,7 @@ namespace SB_Item_Creator
                    tabControl1.TabPages.Add(ArmourTab);
                    tabControl1.TabPages.Add(Descriptiontab);
                    ArmourHead head = JsonConvert.DeserializeObject<ArmourHead>(moditemdata);
+                   VanillaItemName = head.RefrenceName;
                    LoadHead(head, dir);
                    Update();
                    break;
@@ -1024,6 +1029,17 @@ namespace SB_Item_Creator
        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
        {
         
+       }
+
+       private void checkBox1_CheckedChanged(object sender, EventArgs e)
+       {
+           if (checkBox1.Checked == true)
+           {
+               EditingVanilla = true;
+           }
+           else {
+               EditingVanilla = false;
+           }
        }
 
  

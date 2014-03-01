@@ -205,6 +205,7 @@ namespace SB_Item_Creator
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Meleetab.SuspendLayout();
             this.groupBox19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meleeinvicon)).BeginInit();
@@ -2041,6 +2042,7 @@ namespace SB_Item_Creator
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.saveitembtn);
             this.groupBox2.Controls.Add(this.modselectlbl);
@@ -2048,7 +2050,7 @@ namespace SB_Item_Creator
             this.groupBox2.Controls.Add(this.listBox2);
             this.groupBox2.Location = new System.Drawing.Point(740, 247);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(208, 396);
+            this.groupBox2.Size = new System.Drawing.Size(208, 423);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "I/O";
@@ -2431,6 +2433,17 @@ namespace SB_Item_Creator
             this.tabControl1.Size = new System.Drawing.Size(984, 717);
             this.tabControl1.TabIndex = 19;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 396);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(128, 17);
+            this.checkBox1.TabIndex = 30;
+            this.checkBox1.Text = "Replaces Vanilla Item";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2440,7 +2453,7 @@ namespace SB_Item_Creator
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-          //  this.Name = "Form1";
+     //       this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Iron Anvil";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -2684,6 +2697,7 @@ namespace SB_Item_Creator
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RadioButton modradio2;
         private System.Windows.Forms.RadioButton unpackedradio2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
